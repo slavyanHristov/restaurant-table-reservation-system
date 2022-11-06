@@ -4,7 +4,7 @@
   "description": "Front-end of Restaurant Table Reservation System. Created with VueJS 3.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/slavyanHristov/Restaurant-Table-Reservation-System",
+    "url": "https://github.com/slavyanHristov/restaurant-table-reservation-system",
     "directory": "/front-end"
   },
   "scripts": {
