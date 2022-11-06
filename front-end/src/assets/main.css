@@ -1,0 +1,33 @@
+@import "./base.css";
+
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat-Normal";
+  src: local("Montserrat"),
+    url("/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Jost-Bold";
+  src: local("Jost"), url("/fonts/Jost/Jost-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter-Bold";
+  src: local("Inter"), url("/fonts/Inter/Inter-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter-Medium";
+  src: local("Inter"), url("/fonts/Inter/Inter-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter-Light";
+  src: local("Inter"), url("/fonts/Inter/Inter-Light.ttf") format("truetype");
+}

@@ -1,0 +1,110 @@
+<script setup>
+import TextBox from "@/components/TextBox.vue";
+import ButtonFilled from "@/components/ButtonFilled.vue";
+
+import SaveIcon from "~icons/fluent/save-16-regular";
+
+import { ref } from "vue";
+
+const table = ref({
+  name: {
+    textBoxType: "text",
+    id: "tableName",
+    labelText: "Table Name",
+    placeholderText: "Enter table name...",
+    value: "",
+  },
+  capacity: {
+    textBoxType: "number",
+    id: "capacity",
+    labelText: "Capacity",
+    placeholderText: "Enter capacity...",
+    value: "",
+  },
+});
+
+const registerTable = () => {
+  console.log(table.value.name.value);
+  console.log(table.value.capacity.value);
+};
+</script>
+
+<template>
+  <div class="main-wrapper">
+    <div class="header">
+      <h1>Add Table</h1>
+    </div>
+    <div class="form-wrapper">
+      <form @submit.prevent="registerTable">
+        <TextBox
+          v-for="textBox in table"
+          :key="textBox.id"
+          :text-box-type="textBox.textBoxType"
+          :id="textBox.id"
+          :label-text="textBox.labelText"
+          :placeholder-text="textBox.placeholderText"
+          :errors="testErrors"
+          v-model:input="textBox.value"
+        />
+        <ButtonFilled class="button" text="Submit">
+          <template #icon><SaveIcon /></template>
+        </ButtonFilled>
+      </form>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 200px;
+  background: var(--lighter-gray) url("@/assets/images/add-table-header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0% 40%;
+}
+.header h1 {
+  margin-left: var(--x-spacing-mobile);
+  margin-bottom: 15px;
+  font-size: 35px;
+  color: var(--snow-white);
+  text-shadow: 1px 1px 2px var(--primary-black);
+}
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: var(--x-spacing-mobile);
+  margin-right: var(--x-spacing-mobile);
+  align-items: center;
+  background-color: var(--primary-white);
+  padding: 20px 20px;
+  border: 1px solid var(--primary-black);
+  border-radius: 10px;
+}
+form {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.button {
+  width: 200px;
+}
+
+@media screen and (min-width: 1024px) {
+  .form-wrapper {
+    margin: 50px var(--x-spacing-desktop) var(--x-spacing-desktop) 50px;
+  }
+  .header h1 {
+    margin-left: var(--x-spacing-desktop);
+    font-size: 45px;
+    margin-bottom: 20px;
+  }
+}
+</style>

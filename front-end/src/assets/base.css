@@ -1,0 +1,62 @@
+:root {
+  --primary-red: #ff0022;
+  --snow-white: #edfdfb;
+  --primary-gray: #b9bab8;
+  --secondary-gray: #686868;
+  --darker-gray: #343434;
+  --lighter-gray: #9a9a9a;
+  --light-pink: #f8e9f2;
+  --primary-black: #04030f;
+  --accent-red: #ef4444;
+  --primary-blue: #3b82f6;
+  --primary-green: #22c55e;
+  --primary-white: #ffffff;
+  --darkened-color: rgba(0, 0, 0, 0.25);
+
+  --top-spacing: 85px;
+  --x-spacing-desktop: 60px;
+  --x-spacing-mobile: 20px;
+  --opacity-val: 0;
+  --blur-val: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--snow-white);
+}
+
+h1 {
+  margin: 0;
+  font-family: "Inter-Bold";
+}
+
+button {
+  appearance: none;
+  border: none;
+}
+
+body {
+  margin: 0;
+  color: var(--primary-black);
+  background: var(--light-pink);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

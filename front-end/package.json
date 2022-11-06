@@ -1,0 +1,38 @@
+{
+  "name": "restaurant-table-reservation-system-front-end",
+  "version": "1.0.0",
+  "description": "Front-end of Restaurant Table Reservation System. Created with VueJS 3.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slavyanHristov/Restaurant-Table-Reservation-System",
+    "directory": "/front-end"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest --environment jsdom --root src/",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier .  --write"
+  },
+  "dependencies": {
+    "@iconify/json": "^2.1.131",
+    "@vue/compiler-sfc": "^3.2.41",
+    "pinia": "^2.0.23",
+    "unplugin-icons": "^0.14.12",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@vitejs/plugin-vue": "^3.1.2",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/test-utils": "^2.1.0",
+    "eslint": "^8.22.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "jsdom": "^20.0.1",
+    "prettier": "^2.7.1",
+    "vite": "^3.1.8",
+    "vitest": "^0.24.3"
+  }
+}
