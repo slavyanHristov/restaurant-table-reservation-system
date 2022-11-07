@@ -1,5 +1,5 @@
 const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 module.exports = {
   development: {
@@ -8,6 +8,7 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
+    port: process.env.PORT,
   },
   test: {
     username: process.env.DB_USERNAME,
@@ -15,6 +16,7 @@ module.exports = {
     database: process.env.DB_NAME_TEST,
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
+    port: process.env.PORT,
   },
   production: {
     username: process.env.DB_USERNAME,
@@ -22,5 +24,6 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
+    port: process.env.PORT,
   },
 };
