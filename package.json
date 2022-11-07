@@ -4,7 +4,9 @@
   "description": "Restaurant Table Reservation System",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:front-end": "cd front-end && npm run dev"
+    "start:front-end": "cd front-end && npm run dev",
+    "start:back-end": "npm --prefix ./back-end start",
+    "start:dev": "npm run --prefix ./back-end app:dev"
   },
   "repository": {
     "type": "git",

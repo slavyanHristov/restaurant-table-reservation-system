@@ -9,7 +9,13 @@
   },
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/app.js",
+    "start:dev": "npm run migrate:up && nodemon -L ./src/app.js",
+    "app:dev": "concurrently -n \"server,client\" -c \"bgYellow,bgGreen\" \"npm run start:dev\" \"npm run --prefix ../front-end dev\"",
+    "migrate:up": "npx sequelize db:migrate",
+    "migrate:undo": "npx sequelize db:migrate:undo",
+    "seed:all": "npx sequelize db:seed:all"
   },
   "author": "Slavyan Hristov",
   "license": "ISC",
