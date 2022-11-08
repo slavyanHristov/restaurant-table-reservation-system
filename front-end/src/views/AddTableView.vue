@@ -4,6 +4,9 @@ import ButtonFilled from "@/components/ButtonFilled.vue";
 
 import SaveIcon from "~icons/fluent/save-16-regular";
 
+import getValues from "@/utils/getValues";
+import tableAPI from "@/services/tableAPI";
+
 import { ref } from "vue";
 
 const table = ref({
@@ -23,9 +26,13 @@ const table = ref({
   },
 });
 
-const registerTable = () => {
-  console.log(table.value.name.value);
-  console.log(table.value.capacity.value);
+const registerTable = async () => {
+  try {
+    const payload = getValues(table.value);
+    await tableAPI.registerTable(payload);
+  } catch (err) {
+    console.log(err);
+  }
 };
 </script>
 

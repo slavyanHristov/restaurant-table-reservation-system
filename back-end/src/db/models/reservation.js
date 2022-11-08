@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       resDate: DataTypes.DATEONLY,
       resTime: DataTypes.TIME,
+      people: DataTypes.INTEGER,
     },
     {
       sequelize,

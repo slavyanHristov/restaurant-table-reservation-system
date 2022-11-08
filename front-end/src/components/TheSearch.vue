@@ -4,6 +4,7 @@ import ListContainer from "@/components/ListContainer.vue";
 import SearchIcon from "~icons/ant-design/search-outlined";
 
 import filterCollectionByVal from "@/utils/filterCollection";
+import reservationAPI from "@/services/reservationAPI";
 
 import { ref, computed } from "vue";
 
@@ -29,6 +30,17 @@ const reservations = ref([
     people: 5,
   },
 ]);
+
+const getReservations = async () => {
+  try {
+    const res = await reservationAPI.getReservations();
+    console.log(res.data.collection);
+    reservations.value = res.data.collection;
+  } catch (err) {
+    console.log(err);
+  }
+};
+await getReservations();
 
 const filteredReservations = computed(() => {
   return filterCollectionByVal(reservations.value, searchVal.value);

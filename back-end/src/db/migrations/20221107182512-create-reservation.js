@@ -15,6 +15,9 @@ module.exports = {
       resTime: {
         type: Sequelize.TIME,
       },
+      people: {
+        type: Sequelize.INTEGER,
+      },
       tableId: {
         type: Sequelize.INTEGER,
         references: {

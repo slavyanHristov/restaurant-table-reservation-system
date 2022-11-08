@@ -12,6 +12,7 @@ module.exports = {
         {
           resDate: "2022-11-09",
           resTime: "14:00",
+          people: 5,
           tableId: null,
           customerId: results[0].id,
           createdAt: new Date(),

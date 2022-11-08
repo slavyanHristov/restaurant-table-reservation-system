@@ -8,8 +8,12 @@ const reservationRouter = require("../routes/reservation.router");
 const createServer = () => {
   const app = express();
 
+  // const corsOptions = {
+  //   origin: ["http://localhost:3000", "http://localhost:5000"],
+  // };
+
   app.use(cors());
-  app.use(helmet());
+  app.use(helmet({ crossOriginResourcePolicy: false })); // middleware for more secure response headers
   app.use(express.json());
   app.use("/api/v1", require("../routes"));
   app.use("/api/v1/tables", tableRouter);

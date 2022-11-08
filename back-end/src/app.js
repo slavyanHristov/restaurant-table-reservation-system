@@ -10,7 +10,7 @@ const init = async () => {
   try {
     await connect.connectDatabase();
     app.listen(server_port, () => {
-      logger.info(`Server is listening on PORT: ${server_port}`);
+      logger.info(`Server is listening on PORT: ${server_port} 👂 ⬅`);
     });
   } catch (err) {
     await connect.closeConnection();
