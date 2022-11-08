@@ -15,7 +15,8 @@
     "app:dev": "concurrently -n \"server,client\" -c \"bgYellow,bgGreen\" \"npm run start:dev\" \"npm run --prefix ../front-end dev\"",
     "migrate:up": "npx sequelize db:migrate",
     "migrate:undo": "npx sequelize db:migrate:undo",
-    "seed:all": "npx sequelize db:seed:all"
+    "seed:all": "npx sequelize db:seed:all",
+    "seed:undo": "npx sequelize db:seed:undo:all"
   },
   "author": "Slavyan Hristov",
   "license": "ISC",

@@ -3,6 +3,9 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    const [results, metadata] = await queryInterface.sequelize.query(
+      "SELECT id from Customers LIMIT 1;"
+    );
     await queryInterface.bulkInsert(
       "Reservations",
       [
@@ -10,7 +13,7 @@ module.exports = {
           resDate: "2022-11-09",
           resTime: "14:00",
           tableId: null,
-          customerId: 7,
+          customerId: results[0].id,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
