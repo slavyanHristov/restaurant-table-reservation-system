@@ -1,4 +1,4 @@
-const reservationDAO = require("../dao/reservation.dao");
+const reservationDAO = require("../DAOs/reservation.dao");
 
 const getAllReservations = async () => {
   return await reservationDAO.findAllReservations();

@@ -1,4 +1,4 @@
-const tableDAO = require("../dao/table.dao");
+const tableDAO = require("../DAOs/table.dao");
 
 const getAllTables = async () => {
   const tables = await tableDAO.findAllTables();

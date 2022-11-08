@@ -12,7 +12,6 @@ const findAllReservations = async () => {
       },
     ],
   });
-  console.log(reservations);
   return reservations;
 };
 
