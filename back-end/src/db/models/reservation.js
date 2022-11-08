@@ -3,14 +3,14 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Reservation extends Model {
     static associate(models) {
-      Reservation.belongsTo(models.Customer, {
+      Reservation.belongsTo(models.customer, {
         foreignKey: {
           allowNull: false,
         },
         onDelete: "cascade",
         onUpdate: "cascade",
       });
-      Reservation.belongsTo(models.Table, {
+      Reservation.belongsTo(models.table, {
         onDelete: "cascade",
         onUpdate: "cascade",
       });
@@ -20,24 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       resDate: DataTypes.DATEONLY,
       resTime: DataTypes.TIME,
-      tableId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "Table",
-          key: "id",
-        },
-      },
-      customerId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "Customer",
-          key: "id",
-        },
-      },
     },
     {
       sequelize,
-      modelName: "Reservation",
+      modelName: "reservation",
     }
   );
   return Reservation;

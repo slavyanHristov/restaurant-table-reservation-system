@@ -6,11 +6,7 @@ const reservationController = require("../controllers/reservation.controller");
 
 router
   .route("/")
-  .get(
-    tryCatchHandler((req, res) => {
-      return res.send("In development... 🔃");
-    })
-  )
+  .get(tryCatchHandler(reservationController.getAllHandler))
   .all(httpMethodError);
 
 module.exports = router;

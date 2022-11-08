@@ -1,5 +1,5 @@
 const db = require("../db/models");
-const Table = db.Table;
+const Table = db.table;
 
 const findAllTables = async () => {
   return await Table.findAll();

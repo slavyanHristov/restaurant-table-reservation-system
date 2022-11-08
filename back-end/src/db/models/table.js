@@ -3,7 +3,7 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Table extends Model {
     static associate(models) {
-      Table.hasMany(models.Reservation, {
+      Table.hasMany(models.reservation, {
         onUpdate: "cascade",
         onDelete: "cascade",
       });
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Table",
+      modelName: "table",
       indexes: [
         {
           unique: true,
