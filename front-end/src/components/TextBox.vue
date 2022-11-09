@@ -10,6 +10,7 @@ const props = defineProps({
   errors: Object,
 });
 
+console.log(props.errors);
 const emit = defineEmits(["update:input"]);
 </script>
 
@@ -17,8 +18,8 @@ const emit = defineEmits(["update:input"]);
   <div class="wrapper">
     <label :for="props.id">{{ props.labelText }}</label>
     <input
+      :class="{ redBorder: props.errors && props.errors[props.id] }"
       class="input"
-      :class="{ redBorder: props.errors && props.errors[id] }"
       :type="props.textBoxType"
       :id="props.id"
       :name="props.id"
@@ -26,8 +27,8 @@ const emit = defineEmits(["update:input"]);
       :value="props.input"
       @input="emit('update:input', $event.target.value)"
     />
-    <div v-if="props.errors && props.errors[id]" class="errors-wrapper">
-      <div v-for="err in props.errors[id]" :key="err.id" class="error">
+    <div v-if="props.errors && props.errors[props.id]" class="errors-wrapper">
+      <div v-for="err in props.errors[props.id]" :key="err" class="error">
         <ErrorIcon />
         <p>{{ err }}</p>
       </div>

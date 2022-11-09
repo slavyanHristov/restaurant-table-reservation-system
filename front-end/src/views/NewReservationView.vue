@@ -4,6 +4,8 @@ import ButtonFilled from "@/components/ButtonFilled.vue";
 
 import SaveIcon from "~icons/fluent/save-16-regular";
 
+import reservationAPI from "@/services/reservationAPI";
+
 import { ref } from "vue";
 
 const reservation = ref({
@@ -16,9 +18,18 @@ const reservation = ref({
   people: "",
 });
 
-const registerReservation = () => {
-  console.log(reservation.value.firstName);
-  console.log(reservation.value.people);
+const validationErrors = ref(null);
+
+const registerReservation = async () => {
+  try {
+    const res = await reservationAPI.registerReservation(reservation.value);
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+    if (err.response && err.response.data) {
+      validationErrors.value = err.response.data.errors;
+    }
+  }
 };
 </script>
 
@@ -35,7 +46,7 @@ const registerReservation = () => {
             id="firstName"
             label-text="First Name"
             placeholder-text="Enter your first name..."
-            :errors="testErrors"
+            :errors="validationErrors"
             v-model:input="reservation.firstName"
           />
           <TextBox
@@ -43,7 +54,7 @@ const registerReservation = () => {
             id="lastName"
             label-text="Last Name"
             placeholder-text="Enter your last name..."
-            :errors="testErrors"
+            :errors="validationErrors"
             v-model:input="reservation.lastName"
           />
         </div>
@@ -52,7 +63,7 @@ const registerReservation = () => {
           id="phone"
           label-text="Phone Number"
           placeholder-text="Enter your phone number..."
-          :errors="testErrors"
+          :errors="validationErrors"
           v-model:input="reservation.phone"
         />
         <TextBox
@@ -60,7 +71,7 @@ const registerReservation = () => {
           id="email"
           label-text="Email Address"
           placeholder-text="Enter your email address..."
-          :errors="testErrors"
+          :errors="validationErrors"
           v-model:input="reservation.email"
         />
         <div class="textBox-group">
@@ -69,15 +80,15 @@ const registerReservation = () => {
             id="resDate"
             label-text="Reservation Date"
             placeholder-text="Enter reservation date..."
-            :errors="testErrors"
+            :errors="validationErrors"
             v-model:input="reservation.resDate"
           />
           <TextBox
             text-box-type="time"
-            id="lastName"
+            id="resTime"
             label-text="Reservation Time"
             placeholder-text="Enter reservation time..."
-            :errors="testErrors"
+            :errors="validationErrors"
             v-model:input="reservation.resTime"
           />
         </div>
@@ -86,7 +97,7 @@ const registerReservation = () => {
           id="people"
           label-text="Number of People"
           placeholder-text="Enter the number of people..."
-          :errors="testErrors"
+          :errors="validationErrors"
           v-model:input="reservation.people"
         />
         <ButtonFilled class="button" text="Submit">

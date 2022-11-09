@@ -7,6 +7,7 @@ const reservationController = require("../controllers/reservation.controller");
 router
   .route("/")
   .get(tryCatchHandler(reservationController.getAllHandler))
+  .post(tryCatchHandler(reservationController.registerHandler))
   .all(httpMethodError);
 
 module.exports = router;

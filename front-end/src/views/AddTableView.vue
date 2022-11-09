@@ -3,6 +3,7 @@ import TextBox from "@/components/TextBox.vue";
 import ButtonFilled from "@/components/ButtonFilled.vue";
 
 import SaveIcon from "~icons/fluent/save-16-regular";
+import ErrorIcon from "~icons/bxs/error-circle";
 
 import getValues from "@/utils/getValues";
 import tableAPI from "@/services/tableAPI";
@@ -12,7 +13,7 @@ import { ref } from "vue";
 const table = ref({
   name: {
     textBoxType: "text",
-    id: "tableName",
+    id: "name",
     labelText: "Table Name",
     placeholderText: "Enter table name...",
     value: "",
@@ -26,12 +27,19 @@ const table = ref({
   },
 });
 
+const validationErrors = ref(null);
+const emptyFieldsError = ref("");
+
 const registerTable = async () => {
   try {
     const payload = getValues(table.value);
     await tableAPI.registerTable(payload);
   } catch (err) {
-    console.log(err);
+    if (err.response && err.response.data) {
+      emptyFieldsError.value = err.response.data.message;
+      validationErrors.value = err.response.data.errors;
+      console.log(validationErrors.value);
+    }
   }
 };
 </script>
@@ -50,9 +58,13 @@ const registerTable = async () => {
           :id="textBox.id"
           :label-text="textBox.labelText"
           :placeholder-text="textBox.placeholderText"
-          :errors="testErrors"
+          :errors="validationErrors"
           v-model:input="textBox.value"
         />
+        <div class="general-error" v-if="emptyFieldsError">
+          <ErrorIcon />
+          {{ emptyFieldsError }}
+        </div>
         <ButtonFilled class="button" text="Submit">
           <template #icon><SaveIcon /></template>
         </ButtonFilled>
@@ -99,6 +111,16 @@ form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.general-error {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  color: var(--accent-red);
+  font-family: "Inter-Light";
 }
 .button {
   width: 200px;

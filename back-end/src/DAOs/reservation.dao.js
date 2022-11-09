@@ -17,6 +17,40 @@ const findAllReservations = async () => {
   return flattenArrayObjects(reservations);
 };
 
+const createCustomer = async (customerDetails, t = null) => {
+  return await Customer.create(
+    {
+      firstName: customerDetails.firstName,
+      lastName: customerDetails.lastName,
+      phone: customerDetails.phone,
+      email: customerDetails.email,
+    },
+    {
+      transaction: t,
+    }
+  );
+};
+
+const createReservation = async (resDetails) => {
+  const { resDate, resTime, people, ...customerDetails } = resDetails;
+  const result = await db.sequelize.transaction(async (t) => {
+    const customer = await createCustomer(customerDetails, t);
+    const reservation = await Reservation.create(
+      {
+        resDate: resDate,
+        resTime: resTime,
+        people: people,
+        customerId: customer.id,
+      },
+      { transaction: t }
+    );
+
+    return reservation;
+  });
+  return result;
+};
+
 module.exports = {
   findAllReservations,
+  createReservation,
 };
