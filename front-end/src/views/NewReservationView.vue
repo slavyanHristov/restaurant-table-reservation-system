@@ -1,6 +1,7 @@
 <script setup>
 import TextBox from "@/components/TextBox.vue";
 import ButtonFilled from "@/components/ButtonFilled.vue";
+import SuccessMessage from "@/components/SuccessMessage.vue";
 
 import SaveIcon from "~icons/fluent/save-16-regular";
 
@@ -19,11 +20,15 @@ const reservation = ref({
 });
 
 const validationErrors = ref(null);
+const isSuccessful = ref(false);
 
 const registerReservation = async () => {
+  isSuccessful.value = false;
+  validationErrors.value = null;
   try {
     const res = await reservationAPI.registerReservation(reservation.value);
     console.log(res);
+    isSuccessful.value = true;
   } catch (err) {
     console.log(err);
     if (err.response && err.response.data) {
@@ -99,6 +104,10 @@ const registerReservation = async () => {
           placeholder-text="Enter the number of people..."
           :errors="validationErrors"
           v-model:input="reservation.people"
+        />
+        <SuccessMessage
+          :is-successful="isSuccessful"
+          success-message="Successfully registered your reservation!"
         />
         <ButtonFilled class="button" text="Submit">
           <template #icon><SaveIcon /></template>

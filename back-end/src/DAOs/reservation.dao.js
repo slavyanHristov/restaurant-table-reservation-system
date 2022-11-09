@@ -1,4 +1,5 @@
 const db = require("../db/models");
+const { fn, col } = db.sequelize;
 const Reservation = db.reservation;
 const Customer = db.customer;
 
@@ -10,7 +11,11 @@ const findAllReservations = async () => {
     include: [
       {
         model: Customer,
-        attributes: ["firstName", "lastName", "email", "phone"],
+        attributes: [
+          [fn("CONCAT", col("firstName"), " ", col("lastName")), "name"],
+          "email",
+          "phone",
+        ],
       },
     ],
   });

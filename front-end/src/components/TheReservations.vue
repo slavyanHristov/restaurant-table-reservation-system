@@ -11,35 +11,33 @@ import RightArrowIcon from "~icons/ant-design/arrow-right-outlined";
 import LeftArrowIcon from "~icons/ant-design/arrow-left-outlined";
 
 import { onIntersect } from "@/utils/intersectObserver";
+import reservationAPI from "@/services/reservationAPI";
 
 import { ref, computed, onMounted, onUnmounted } from "vue";
 
 const observer = ref({});
 const allTablesRef = ref({});
 
-const currDate = ref("27/10/2022");
+const currDate = ref("2022-11-22");
 
 const fields = ref({
   name: "Name",
   phone: "Phone",
   resTime: "Reservation Time",
 });
-const reservations = ref([
-  {
-    name: "John Doe",
-    phone: "12345672",
-    resTime: "19:00",
-    resDate: "2022-11-02",
-    people: 4,
-  },
-  {
-    name: "Slavyan Hristov",
-    phone: "12345678",
-    resTime: "20:00",
-    resDate: "2022-11-01",
-    people: 3,
-  },
-]);
+
+const reservations = ref(null);
+
+const getReservations = async () => {
+  try {
+    const res = await reservationAPI.getReservations();
+    reservations.value = res.data.collection;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+await getReservations();
 
 const tables = ref([
   {
@@ -81,6 +79,11 @@ const tables = ref([
 ]);
 const freeTables = computed(() => {
   return tables.value.filter((table) => !table.isOccupied);
+});
+const filterReservations = computed(() => {
+  return reservations.value.filter(
+    (reservation) => reservation.resDate === currDate.value
+  );
 });
 const isPopupOpen = ref(false);
 const popupHeaderText = ref("");
@@ -148,7 +151,7 @@ onUnmounted(() => {
       <div class="table-wrapper">
         <TableView
           :fields="fields"
-          :collection="reservations"
+          :collection="filterReservations"
           @onOpen="openPopup"
           @onSelectedReservation="assignSelectedReservation"
         />

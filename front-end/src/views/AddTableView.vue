@@ -1,6 +1,7 @@
 <script setup>
 import TextBox from "@/components/TextBox.vue";
 import ButtonFilled from "@/components/ButtonFilled.vue";
+import SuccessMessage from "@/components/SuccessMessage.vue";
 
 import SaveIcon from "~icons/fluent/save-16-regular";
 import ErrorIcon from "~icons/bxs/error-circle";
@@ -29,11 +30,15 @@ const table = ref({
 
 const validationErrors = ref(null);
 const emptyFieldsError = ref("");
+const isSuccessful = ref(false);
 
 const registerTable = async () => {
+  validationErrors.value = null;
+  isSuccessful.value = false;
   try {
     const payload = getValues(table.value);
     await tableAPI.registerTable(payload);
+    isSuccessful.value = true;
   } catch (err) {
     if (err.response && err.response.data) {
       emptyFieldsError.value = err.response.data.message;
@@ -65,6 +70,10 @@ const registerTable = async () => {
           <ErrorIcon />
           {{ emptyFieldsError }}
         </div>
+        <SuccessMessage
+          :is-successful="isSuccessful"
+          success-message="Successfully registered the new table!"
+        />
         <ButtonFilled class="button" text="Submit">
           <template #icon><SaveIcon /></template>
         </ButtonFilled>
@@ -112,7 +121,6 @@ form {
   align-items: center;
   flex-direction: column;
 }
-
 .general-error {
   display: flex;
   align-items: center;
@@ -122,6 +130,7 @@ form {
   color: var(--accent-red);
   font-family: "Inter-Light";
 }
+
 .button {
   width: 200px;
 }

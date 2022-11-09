@@ -71,7 +71,7 @@ const filteredReservations = computed(() => {
       :filteredCollection="filteredReservations"
     >
       <template #card="slotProps">
-        <ReservationInfo class="test" :reservation="slotProps.item" />
+        <ReservationInfo :reservation="slotProps.item" />
       </template>
     </ListContainer>
   </div>
@@ -149,6 +149,11 @@ const filteredReservations = computed(() => {
   padding-left: 40px;
   background: none;
   border: 1px solid var(--lighter-gray);
+}
+.test {
+  transition: all 1.5s;
+  filter: blur(var(--blur-val));
+  opacity: var(--opacity-val);
 }
 
 .search-box:focus {
