@@ -1,8 +1,6 @@
-const tableDAO = require("../DAOs/table.dao");
-
-const getAllTables = async () => {
+const getAllTables = async (tableDAO) => {
   const tables = await tableDAO.findAllTables();
-  if (tables.length === 0)
+  if (tables?.length === 0)
     throw {
       status: 404,
       message: "No restaurant tables inserted in the database.",
@@ -10,7 +8,7 @@ const getAllTables = async () => {
   return tables;
 };
 
-const registerTable = async ({ name, capacity }) => {
+const registerTable = async (tableDAO, { name, capacity }) => {
   if (!name || !capacity)
     throw {
       status: 403,
