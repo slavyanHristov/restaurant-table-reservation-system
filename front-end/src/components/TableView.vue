@@ -2,13 +2,18 @@
 import ButtonAction from "@/components/ButtonAction.vue";
 import CrossIcon from "~icons/radix-icons/cross-circled";
 import NotFoundResource from "@/components/NotFoundResource.vue";
+import reservationAPI from "@/services/reservationAPI";
 
 const props = defineProps({
   fields: Object,
   collection: Array,
 });
 
-const emit = defineEmits(["onOpen", "onSelectedReservation"]);
+const emit = defineEmits([
+  "onOpen",
+  "onSelectedReservation",
+  "onCanceledReservation",
+]);
 
 const passItemData = (item) => {
   emit("onSelectedReservation", item);
@@ -20,8 +25,14 @@ const openPopup = (text) => {
     headerText: text,
   });
 };
-const removeReservation = (item) => {
-  console.log(item);
+const cancelReservation = async (item) => {
+  try {
+    const res = await reservationAPI.cancelReservation(item.id);
+    console.log(res);
+    emit("onCanceledReservation");
+  } catch (err) {
+    console.log(err);
+  }
 };
 </script>
 
@@ -46,7 +57,10 @@ const removeReservation = (item) => {
               <ButtonAction
                 text="Seat"
                 color="#22c55e"
-                @click="openPopup('Choose Table')"
+                @click="
+                  openPopup('Choose Table');
+                  passItemData(item);
+                "
               />
               <ButtonAction
                 text="Edit"
@@ -59,7 +73,7 @@ const removeReservation = (item) => {
               <ButtonAction
                 text="Cancel"
                 color="#ef4444"
-                @click="removeReservation(item)"
+                @click="cancelReservation(item)"
               />
             </div>
           </td>

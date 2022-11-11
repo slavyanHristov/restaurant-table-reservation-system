@@ -41,8 +41,40 @@ const editHandler = async (req, res) => {
   });
 };
 
+const cancelHandler = async (req, res) => {
+  const reservationId = req.params.reservationId;
+  const reservation = await reservationService.cancelReservation(
+    reservationId,
+    reservationDAO
+  );
+
+  return res.status(200).json({
+    success: true,
+    message: "Successfully canceled the reservation!",
+    item: reservation,
+  });
+};
+
+const chooseTableHandler = async (req, res) => {
+  const reservationId = req.params.reservationId;
+  const { tableId } = req.body;
+  const info = await reservationService.chooseTable(
+    reservationId,
+    reservationDAO,
+    tableId
+  );
+
+  return res.status(200).json({
+    success: true,
+    message: "Successfully chosen your table!",
+    item: info,
+  });
+};
+
 module.exports = {
   getAllHandler,
   registerHandler,
   editHandler,
+  cancelHandler,
+  chooseTableHandler,
 };

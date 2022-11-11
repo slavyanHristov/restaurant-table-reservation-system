@@ -9,7 +9,7 @@ module.exports = {
     "@vue/eslint-config-prettier",
   ],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 13,
   },
   rules: {
     "vue/no-unused-vars": "error",

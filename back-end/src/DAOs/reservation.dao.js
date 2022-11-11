@@ -2,7 +2,8 @@ const db = require("../db/models");
 const { fn, col } = db.sequelize;
 const Reservation = db.reservation;
 const Customer = db.customer;
-
+const ReservationsTables = db.reservations_tables;
+const Table = db.table;
 const { flattenArrayObjects } = require("../utils/flattenObject");
 
 const findAllReservations = async () => {
@@ -20,6 +21,16 @@ const findAllReservations = async () => {
     ],
   });
   return flattenArrayObjects(reservations);
+};
+
+const findReservationById = async (reservationId) => {
+  const reservation = await Reservation.findOne({
+    where: {
+      id: reservationId,
+    },
+  });
+
+  return reservation;
 };
 
 const createCustomer = async (customerDetails, t = null) => {
@@ -65,8 +76,32 @@ const updateReservation = async (reservationId, resDetails) => {
   return result;
 };
 
+const deleteReservation = async (reservation) => {
+  return await reservation.destroy();
+};
+
+const createReservationsTables = async (reservationId, tableId) => {
+  await Table.update(
+    {
+      isOccupied: true,
+    },
+    {
+      where: {
+        id: tableId,
+      },
+    }
+  );
+  return await ReservationsTables.create({
+    reservationId: reservationId,
+    tableId: tableId,
+  });
+};
+
 module.exports = {
   findAllReservations,
   createReservation,
   updateReservation,
+  deleteReservation,
+  findReservationById,
+  createReservationsTables,
 };

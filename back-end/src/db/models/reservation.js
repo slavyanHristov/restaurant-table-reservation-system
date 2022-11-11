@@ -9,10 +9,13 @@ module.exports = (sequelize, DataTypes) => {
         },
         onDelete: "cascade",
         onUpdate: "cascade",
+        hooks: true,
       });
-      Reservation.belongsTo(models.table, {
+      Reservation.belongsToMany(models.table, {
+        through: models.reservations_tables,
         onDelete: "cascade",
         onUpdate: "cascade",
+        hooks: true,
       });
     }
   }

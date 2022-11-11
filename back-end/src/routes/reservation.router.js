@@ -13,6 +13,12 @@ router
 router
   .route("/:reservationId")
   .patch(tryCatchHandler(reservationController.editHandler))
+  .delete(tryCatchHandler(reservationController.cancelHandler))
+  .all(httpMethodError);
+
+router
+  .route("/choose-table/:reservationId")
+  .post(tryCatchHandler(reservationController.chooseTableHandler))
   .all(httpMethodError);
 
 module.exports = router;

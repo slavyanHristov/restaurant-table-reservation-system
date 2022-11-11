@@ -10,6 +10,12 @@ class ReservationAPI {
   editReservation(id, reservationData) {
     return API().patch("/reservations/" + id, reservationData);
   }
+  cancelReservation(id) {
+    return API().delete("/reservations/" + id);
+  }
+  chooseTable(id, tableId) {
+    return API().post("/reservations/choose-table/" + id, tableId);
+  }
 }
 
 export default new ReservationAPI();

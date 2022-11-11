@@ -13,13 +13,15 @@ const cssProps = computed(() => {
   <div class="main-wrapper">
     <div class="header">
       <div>{{ props.table?.name }}</div>
-      <div class="table-status" v-show="props.table.isOccupied">Occupied</div>
+      <div class="table-status" v-show="props.table.reservations.length">
+        Occupied
+      </div>
     </div>
     <div class="content">
       <div class="seats-wrapper" :style="cssProps">
         <div
           class="circle"
-          :class="{ blackColor: props.table?.isOccupied }"
+          :class="{ blackColor: props.table?.reservations.length !== 0 }"
           v-for="seat in props.table?.capacity"
           :key="seat"
         ></div>

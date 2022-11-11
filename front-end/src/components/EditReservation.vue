@@ -1,6 +1,7 @@
 <script setup>
 import ButtonFilled from "@/components/ButtonFilled.vue";
 import TextBox from "@/components/TextBox.vue";
+import SuccessMessage from "@/components/SuccessMessage.vue";
 import SaveIcon from "~icons/fluent/save-16-regular";
 
 import { ref } from "vue";
@@ -11,6 +12,8 @@ import getValues from "@/utils/getValues";
 const props = defineProps({
   reservation: Object,
 });
+
+const emit = defineEmits(["onEdited"]);
 
 console.log(props.reservation);
 
@@ -37,15 +40,23 @@ const reservation = ref({
     value: props.reservation?.people.toString(),
   },
 });
-
+const validationErrors = ref({});
+const isSuccessful = ref(false);
 const editReservation = async () => {
+  validationErrors.value = {};
+  isSuccessful.value = false;
   try {
     const res = await reservationAPI.editReservation(
       props.reservation.id,
       getValues(reservation.value)
     );
+    emit("onEdited");
+    isSuccessful.value = true;
     console.log(res);
   } catch (err) {
+    if (err.response && err.response.data) {
+      validationErrors.value = err.response.data.errors;
+    }
     console.log(err);
   }
 };
@@ -61,7 +72,13 @@ const editReservation = async () => {
         :id="textBox.id"
         :label-text="textBox.labelText"
         :placeholder-text="textBox.placeholderText"
+        :errors="validationErrors"
         v-model:input="textBox.value"
+      />
+      <SuccessMessage
+        class="success"
+        :is-successful="isSuccessful"
+        success-message="Done!"
       />
       <ButtonFilled text="Done">
         <template #icon>
@@ -72,4 +89,8 @@ const editReservation = async () => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.success {
+  margin-bottom: 20px;
+}
+</style>

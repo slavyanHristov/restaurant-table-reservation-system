@@ -12,6 +12,7 @@ import LeftArrowIcon from "~icons/ant-design/arrow-left-outlined";
 
 import { onIntersect } from "@/utils/intersectObserver";
 import reservationAPI from "@/services/reservationAPI";
+import tableAPI from "@/services/tableAPI";
 import dateNavigator from "@/utils/dateNavigator";
 
 import { ref, computed, onMounted, onUnmounted } from "vue";
@@ -26,46 +27,8 @@ const fields = ref({
 });
 
 const reservations = ref(null);
+const tables = ref(null);
 const currDate = ref(dateNavigator.setToday());
-
-const tables = ref([
-  {
-    id: 1,
-    name: "Table #1",
-    capacity: 5,
-    isOccupied: true,
-  },
-  {
-    id: 2,
-    name: "Table #2",
-    capacity: 2,
-    isOccupied: false,
-  },
-  {
-    id: 3,
-    name: "Table #3",
-    capacity: 4,
-    isOccupied: false,
-  },
-  {
-    id: 4,
-    name: "Table #4",
-    capacity: 6,
-    isOccupied: false,
-  },
-  {
-    id: 5,
-    name: "Table #5",
-    capacity: 3,
-    isOccupied: true,
-  },
-  {
-    id: 6,
-    name: "Table #6",
-    capacity: 5,
-    isOccupied: false,
-  },
-]);
 
 const freeTables = computed(() => {
   return tables.value.filter((table) => !table.isOccupied);
@@ -75,6 +38,7 @@ const filterReservations = computed(() => {
     (reservation) => reservation.resDate === currDate.value
   );
 });
+
 const isPopupOpen = ref(false);
 const popupHeaderText = ref("");
 const selectedReservation = ref(null);
@@ -88,7 +52,33 @@ const getReservations = async () => {
   }
 };
 
+const getTables = async () => {
+  try {
+    const res = await tableAPI.getAllTables();
+    tables.value = res.data.collection;
+    console.log(tables.value);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 await getReservations();
+await getTables();
+
+const refreshReservations = async (isEditOpen = false) => {
+  await getReservations();
+  if (isEditOpen)
+    setTimeout(() => {
+      isPopupOpen.value = false;
+    }, 2000);
+};
+
+const refreshTables = async () => {
+  await getTables();
+  setTimeout(() => {
+    isPopupOpen.value = false;
+  }, 2000);
+};
 
 const today = () => {
   currDate.value = dateNavigator.setToday();
@@ -147,8 +137,14 @@ onUnmounted(() => {
         <EditReservation
           v-if="popupHeaderText === 'Edit Reservation'"
           :reservation="selectedReservation"
+          @on-edited="refreshReservations(true)"
         />
-        <ChooseTable v-else :free-tables="freeTables" />
+        <ChooseTable
+          v-else
+          :free-tables="freeTables"
+          :reservation="selectedReservation"
+          @on-chosen="refreshTables"
+        />
       </template>
     </PopupBox>
     <div class="header">
@@ -167,6 +163,7 @@ onUnmounted(() => {
           :collection="filterReservations"
           @onOpen="openPopup"
           @onSelectedReservation="assignSelectedReservation"
+          @onCanceledReservation="refreshReservations"
         />
       </div>
       <div class="all-tables" ref="allTablesRef">

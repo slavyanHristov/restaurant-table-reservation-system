@@ -3,9 +3,11 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Table extends Model {
     static associate(models) {
-      Table.hasMany(models.reservation, {
-        onUpdate: "cascade",
+      Table.belongsToMany(models.reservation, {
+        through: models.reservations_tables,
         onDelete: "cascade",
+        onUpdate: "cascade",
+        hooks: true,
       });
     }
   }
