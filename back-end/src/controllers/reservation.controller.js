@@ -25,7 +25,24 @@ const registerHandler = async (req, res) => {
   });
 };
 
+const editHandler = async (req, res) => {
+  const payload = req.body;
+  const reservationId = req.params.reservationId;
+  const reservation = await reservationService.editReservation(
+    reservationId,
+    reservationDAO,
+    payload
+  );
+
+  return res.status(200).json({
+    success: true,
+    message: "Successfully edit the reservation!",
+    item: reservation,
+  });
+};
+
 module.exports = {
   getAllHandler,
   registerHandler,
+  editHandler,
 };

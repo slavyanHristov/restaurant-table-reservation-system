@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
   <div class="wrapper">
     <p class="names">
-      {{ props.reservation.firstName + " " + props.reservation.lastName }}
+      {{ props.reservation.name }}
     </p>
     <div class="reservation-details">
       <div class="info-container">

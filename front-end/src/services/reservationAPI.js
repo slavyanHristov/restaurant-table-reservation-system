@@ -7,6 +7,9 @@ class ReservationAPI {
   registerReservation(reservationData) {
     return API().post("/reservations", reservationData);
   }
+  editReservation(id, reservationData) {
+    return API().patch("/reservations/" + id, reservationData);
+  }
 }
 
 export default new ReservationAPI();

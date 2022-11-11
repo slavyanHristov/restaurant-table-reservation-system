@@ -12,13 +12,12 @@ import LeftArrowIcon from "~icons/ant-design/arrow-left-outlined";
 
 import { onIntersect } from "@/utils/intersectObserver";
 import reservationAPI from "@/services/reservationAPI";
+import dateNavigator from "@/utils/dateNavigator";
 
 import { ref, computed, onMounted, onUnmounted } from "vue";
 
 const observer = ref({});
 const allTablesRef = ref({});
-
-const currDate = ref("2022-11-22");
 
 const fields = ref({
   name: "Name",
@@ -27,17 +26,7 @@ const fields = ref({
 });
 
 const reservations = ref(null);
-
-const getReservations = async () => {
-  try {
-    const res = await reservationAPI.getReservations();
-    reservations.value = res.data.collection;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-await getReservations();
+const currDate = ref(dateNavigator.setToday());
 
 const tables = ref([
   {
@@ -77,6 +66,7 @@ const tables = ref([
     isOccupied: false,
   },
 ]);
+
 const freeTables = computed(() => {
   return tables.value.filter((table) => !table.isOccupied);
 });
@@ -88,6 +78,29 @@ const filterReservations = computed(() => {
 const isPopupOpen = ref(false);
 const popupHeaderText = ref("");
 const selectedReservation = ref(null);
+
+const getReservations = async () => {
+  try {
+    const res = await reservationAPI.getReservations();
+    reservations.value = res.data.collection;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+await getReservations();
+
+const today = () => {
+  currDate.value = dateNavigator.setToday();
+};
+
+const prev = () => {
+  currDate.value = dateNavigator.setPrevDay(currDate.value);
+};
+
+const next = () => {
+  currDate.value = dateNavigator.setNextDay(currDate.value);
+};
 
 const openPopup = (popup) => {
   isPopupOpen.value = popup?.isOpen;
@@ -144,9 +157,9 @@ onUnmounted(() => {
     <div class="content-wrapper">
       <h1>Reservations for {{ currDate }}</h1>
       <div class="date-navigation">
-        <LeftArrowIcon class="vector" />
-        <ButtonFilled text="Today" />
-        <RightArrowIcon class="vector" />
+        <LeftArrowIcon class="vector" @click="prev()" />
+        <ButtonFilled text="Today" @click="today()" />
+        <RightArrowIcon class="vector" @click="next()" />
       </div>
       <div class="table-wrapper">
         <TableView
@@ -206,9 +219,9 @@ onUnmounted(() => {
   margin-left: var(--x-spacing-mobile);
   margin-right: var(--x-spacing-mobile);
   align-items: center;
-  background-color: var(--primary-white);
   border-radius: 10px;
-  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 .date-navigation {

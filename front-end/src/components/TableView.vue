@@ -1,5 +1,7 @@
 <script setup>
 import ButtonAction from "@/components/ButtonAction.vue";
+import CrossIcon from "~icons/radix-icons/cross-circled";
+import NotFoundResource from "@/components/NotFoundResource.vue";
 
 const props = defineProps({
   fields: Object,
@@ -25,7 +27,7 @@ const removeReservation = (item) => {
 
 <template>
   <div class="main-wrapper">
-    <table>
+    <table key="1" v-if="props.collection.length !== 0">
       <thead>
         <tr class="header-row">
           <th v-for="field in props.fields" :key="field">
@@ -64,13 +66,24 @@ const removeReservation = (item) => {
         </tr>
       </tbody>
     </table>
+    <NotFoundResource
+      class="test"
+      v-else
+      text="No Reservations"
+      position="relative"
+    >
+      <template #icon><CrossIcon class="vector" /></template>
+    </NotFoundResource>
   </div>
 </template>
 
 <style scoped>
 .main-wrapper {
   width: 100%;
+  position: relative;
+  display: grid;
 }
+
 table {
   border-collapse: separate;
   border-spacing: 0 0px;
@@ -107,5 +120,22 @@ table {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.vector {
+  font-size: 40px;
+}
+.item-container {
+  width: 100%;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  filter: blur(5px);
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease-out;
 }
 </style>

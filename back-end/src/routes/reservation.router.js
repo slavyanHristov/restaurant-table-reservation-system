@@ -10,4 +10,9 @@ router
   .post(tryCatchHandler(reservationController.registerHandler))
   .all(httpMethodError);
 
+router
+  .route("/:reservationId")
+  .patch(tryCatchHandler(reservationController.editHandler))
+  .all(httpMethodError);
+
 module.exports = router;

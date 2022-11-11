@@ -7,7 +7,7 @@ const { flattenArrayObjects } = require("../utils/flattenObject");
 
 const findAllReservations = async () => {
   const reservations = await Reservation.findAll({
-    attributes: ["resDate", "resTime", "people"],
+    attributes: ["id", "resDate", "resTime", "people"],
     include: [
       {
         model: Customer,
@@ -55,7 +55,18 @@ const createReservation = async (resDetails) => {
   return result;
 };
 
+const updateReservation = async (reservationId, resDetails) => {
+  const [result, metadata] = await Reservation.update(resDetails, {
+    where: {
+      id: reservationId,
+    },
+  });
+
+  return result;
+};
+
 module.exports = {
   findAllReservations,
   createReservation,
+  updateReservation,
 };
