@@ -1,5 +1,6 @@
 "use strict";
 const { Model, TIME } = require("sequelize");
+const dateTimeValidator = require("../../utils/dateAndTimeValidator");
 module.exports = (sequelize, DataTypes) => {
   class Reservation extends Model {
     static associate(models) {
@@ -28,6 +29,11 @@ module.exports = (sequelize, DataTypes) => {
             args: true,
             msg: "Please enter reservation date!",
           },
+          isDateInThePast(value) {
+            const currDate = dateTimeValidator.asDateString(new Date());
+            if (dateTimeValidator.isDateInThePast(currDate, value))
+              throw new Error("Given date is in the past!");
+          },
         },
       },
       resTime: {
@@ -36,6 +42,11 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: {
             args: true,
             msg: "Please enter reservation time!",
+          },
+          isTimeInThePast(value) {
+            const currTime = dateTimeValidator.asTimeString(new Date());
+            if (dateTimeValidator.isDateInThePast(currTime, value))
+              throw new Error("Given time is in the past!");
           },
         },
       },
