@@ -2,9 +2,8 @@
 import TextBox from "@/components/TextBox.vue";
 import ButtonFilled from "@/components/ButtonFilled.vue";
 import SuccessMessage from "@/components/SuccessMessage.vue";
-
+import ErrorMessage from "@/components/ErrorMessage.vue";
 import SaveIcon from "~icons/fluent/save-16-regular";
-import ErrorIcon from "~icons/bxs/error-circle";
 
 import getValues from "@/utils/getValues";
 import tableAPI from "@/services/tableAPI";
@@ -29,11 +28,12 @@ const table = ref({
 });
 
 const validationErrors = ref(null);
-const emptyFieldsError = ref("");
+const emptyFieldsError = ref(null);
 const isSuccessful = ref(false);
 
 const registerTable = async () => {
   validationErrors.value = null;
+  emptyFieldsError.value = null;
   isSuccessful.value = false;
   try {
     const payload = getValues(table.value);
@@ -66,10 +66,10 @@ const registerTable = async () => {
           :errors="validationErrors"
           v-model:input="textBox.value"
         />
-        <div class="general-error" v-if="emptyFieldsError">
-          <ErrorIcon />
-          {{ emptyFieldsError }}
-        </div>
+        <ErrorMessage
+          :error-flag="emptyFieldsError"
+          :error-message="emptyFieldsError"
+        />
         <SuccessMessage
           :is-successful="isSuccessful"
           success-message="Successfully registered the new table!"

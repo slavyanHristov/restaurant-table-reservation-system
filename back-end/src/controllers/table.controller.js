@@ -37,7 +37,19 @@ const registerHandler = async (req, res) => {
   });
 };
 
+const freeTableHandler = async (req, res) => {
+  const tableId = req.params.tableId;
+  const info = await tableService.freeTable(tableDAO, tableId);
+
+  return res.status(200).json({
+    success: true,
+    message: "Successfully freed the chosen table!",
+    item: info,
+  });
+};
+
 module.exports = {
   getAllHandler,
   registerHandler,
+  freeTableHandler,
 };

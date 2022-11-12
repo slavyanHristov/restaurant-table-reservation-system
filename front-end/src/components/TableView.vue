@@ -25,6 +25,10 @@ const openPopup = (text) => {
     headerText: text,
   });
 };
+
+const toUpperCase = (str) => {
+  return str.toUpperCase();
+};
 const cancelReservation = async (item) => {
   try {
     const res = await reservationAPI.cancelReservation(item.id);
@@ -53,7 +57,7 @@ const cancelReservation = async (item) => {
             {{ item[index] }}
           </td>
           <td>
-            <div class="actions">
+            <div v-if="item.resStatus === 'pending'" class="actions">
               <ButtonAction
                 text="Seat"
                 color="#22c55e"
@@ -75,6 +79,9 @@ const cancelReservation = async (item) => {
                 color="#ef4444"
                 @click="cancelReservation(item)"
               />
+            </div>
+            <div class="status" v-else>
+              <p>{{ toUpperCase(item.resStatus) }}</p>
             </div>
           </td>
         </tr>
@@ -134,6 +141,10 @@ table {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.status {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .vector {

@@ -1,27 +1,47 @@
 <script setup>
 import { computed } from "vue";
+import tableAPI from "@/services/tableAPI";
+
 const props = defineProps({
   table: Object,
 });
+
+const emit = defineEmits(["onFreedTable"]);
+
 const cssProps = computed(() => {
   return {
     "--columns": props.table.capacity,
   };
 });
+
+const freeTable = async (id) => {
+  try {
+    const res = await tableAPI.freeTable(id);
+    emit("onFreedTable");
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+};
 </script>
 <template>
   <div class="main-wrapper">
     <div class="header">
       <div>{{ props.table?.name }}</div>
-      <div class="table-status" v-show="props.table.reservations.length">
-        Occupied
+      <div class="table-status" v-show="props.table.isOccupied">Occupied</div>
+      <div
+        class="table-status"
+        v-show="props.table.isOccupied"
+        @click="freeTable(props.table.id)"
+      >
+        X
       </div>
     </div>
     <div class="content">
       <div class="seats-wrapper" :style="cssProps">
         <div
           class="circle"
-          :class="{ blackColor: props.table?.reservations.length !== 0 }"
+          :class="{ blackColor: props.table.isOccupied }"
           v-for="seat in props.table?.capacity"
           :key="seat"
         ></div>

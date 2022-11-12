@@ -19,7 +19,36 @@ const createTable = async ({ name, capacity }) => {
   });
 };
 
+const findTableById = async (id) => {
+  return await Table.findOne({
+    where: {
+      id: id,
+    },
+  });
+};
+
+const freeTable = async (id) => {
+  const table = await findTableById(id);
+  /**
+   * TODO: check if table exists first
+   */
+  const reservationId = table.reservationId;
+  const reservation = await Reservation.findOne({
+    where: {
+      id: reservationId,
+    },
+  });
+  await table.update({
+    isOccupied: false,
+    reservationId: null,
+  });
+
+  return await reservation.destroy();
+};
+
 module.exports = {
   findAllTables,
   createTable,
+  findTableById,
+  freeTable,
 };

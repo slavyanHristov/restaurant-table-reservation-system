@@ -10,4 +10,9 @@ router
   .post(tryCatchHandler(tableController.registerHandler))
   .all(httpMethodError);
 
+router
+  .route("/:tableId")
+  .delete(tryCatchHandler(tableController.freeTableHandler))
+  .all(httpMethodError);
+
 module.exports = router;

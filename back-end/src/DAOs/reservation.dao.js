@@ -2,13 +2,13 @@ const db = require("../db/models");
 const { fn, col } = db.sequelize;
 const Reservation = db.reservation;
 const Customer = db.customer;
-const ReservationsTables = db.reservations_tables;
 const Table = db.table;
 const { flattenArrayObjects } = require("../utils/flattenObject");
+const dateTimeValidator = require("../utils/dateAndTimeValidator");
 
 const findAllReservations = async () => {
   const reservations = await Reservation.findAll({
-    attributes: ["id", "resDate", "resTime", "people"],
+    attributes: ["id", "resDate", "resTime", "resStatus", "people"],
     include: [
       {
         model: Customer,
@@ -51,6 +51,19 @@ const createReservation = async (resDetails) => {
   const { resDate, resTime, people, ...customerDetails } = resDetails;
   const result = await db.sequelize.transaction(async (t) => {
     const customer = await createCustomer(customerDetails, t);
+    const currDate = new Date();
+    /**
+     * TODO:
+     * Move me to business logic
+     */
+    if (resDate === dateTimeValidator.asDateString(currDate)) {
+      if (resTime < dateTimeValidator.asTimeString(currDate)) {
+        throw {
+          status: 400,
+          message: "ERROR: Given time is in the past!",
+        };
+      }
+    }
     const reservation = await Reservation.create(
       {
         resDate: resDate,
@@ -80,10 +93,16 @@ const deleteReservation = async (reservation) => {
   return await reservation.destroy();
 };
 
-const createReservationsTables = async (reservationId, tableId) => {
+const setReservationStatus = async (reservation, status) => {
+  reservation.resStatus = status;
+  return await reservation.save();
+};
+
+const setReservationTable = async (reservationId, tableId) => {
   await Table.update(
     {
       isOccupied: true,
+      reservationId: reservationId,
     },
     {
       where: {
@@ -91,10 +110,16 @@ const createReservationsTables = async (reservationId, tableId) => {
       },
     }
   );
-  return await ReservationsTables.create({
-    reservationId: reservationId,
-    tableId: tableId,
-  });
+  return await Reservation.update(
+    {
+      resStatus: "seated",
+    },
+    {
+      where: {
+        id: reservationId,
+      },
+    }
+  );
 };
 
 module.exports = {
@@ -103,5 +128,6 @@ module.exports = {
   updateReservation,
   deleteReservation,
   findReservationById,
-  createReservationsTables,
+  setReservationTable,
+  setReservationStatus,
 };

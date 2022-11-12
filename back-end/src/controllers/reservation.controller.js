@@ -1,5 +1,6 @@
 const reservationService = require("../services/reservation");
 const reservationDAO = require("../DAOs/reservation.dao");
+const tableDAO = require("../DAOs/table.dao");
 
 const getAllHandler = async (req, res) => {
   const reservations = await reservationService.getAllReservations(
@@ -58,10 +59,12 @@ const cancelHandler = async (req, res) => {
 const chooseTableHandler = async (req, res) => {
   const reservationId = req.params.reservationId;
   const { tableId } = req.body;
+
   const info = await reservationService.chooseTable(
     reservationId,
+    tableId,
     reservationDAO,
-    tableId
+    tableDAO
   );
 
   return res.status(200).json({

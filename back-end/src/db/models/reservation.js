@@ -1,5 +1,5 @@
 "use strict";
-const { Model, TIME } = require("sequelize");
+const { Model } = require("sequelize");
 const dateTimeValidator = require("../../utils/dateAndTimeValidator");
 module.exports = (sequelize, DataTypes) => {
   class Reservation extends Model {
@@ -12,9 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: "cascade",
         hooks: true,
       });
-      Reservation.belongsToMany(models.table, {
-        through: models.reservations_tables,
-        onDelete: "cascade",
+      Reservation.hasMany(models.table, {
         onUpdate: "cascade",
         hooks: true,
       });
@@ -43,11 +41,6 @@ module.exports = (sequelize, DataTypes) => {
             args: true,
             msg: "Please enter reservation time!",
           },
-          isTimeInThePast(value) {
-            const currTime = dateTimeValidator.asTimeString(new Date());
-            if (dateTimeValidator.isDateInThePast(currTime, value))
-              throw new Error("Given time is in the past!");
-          },
         },
       },
       people: {
@@ -66,6 +59,10 @@ module.exports = (sequelize, DataTypes) => {
             msg: "Maximum 20 people per reservation!",
           },
         },
+      },
+      resStatus: {
+        type: DataTypes.ENUM("pending", "seated", "missed"),
+        defaultValue: "pending",
       },
     },
     {

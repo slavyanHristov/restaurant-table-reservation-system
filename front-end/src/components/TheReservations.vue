@@ -143,7 +143,10 @@ onUnmounted(() => {
           v-else
           :free-tables="freeTables"
           :reservation="selectedReservation"
-          @on-chosen="refreshTables"
+          @on-chosen="
+            refreshTables();
+            getReservations();
+          "
         />
       </template>
     </PopupBox>
@@ -170,7 +173,13 @@ onUnmounted(() => {
         <h1>Tables</h1>
         <GridContainer :collection="tables">
           <template #card="slotProps">
-            <RestaurantTable :table="slotProps.item" />
+            <RestaurantTable
+              :table="slotProps.item"
+              @on-freed-table="
+                getTables();
+                getReservations();
+              "
+            />
           </template>
         </GridContainer>
       </div>

@@ -2,6 +2,7 @@
 import TextBox from "@/components/TextBox.vue";
 import ButtonFilled from "@/components/ButtonFilled.vue";
 import SuccessMessage from "@/components/SuccessMessage.vue";
+import ErrorMessage from "@/components/ErrorMessage.vue";
 
 import SaveIcon from "~icons/fluent/save-16-regular";
 
@@ -21,10 +22,12 @@ const reservation = ref({
 
 const validationErrors = ref(null);
 const isSuccessful = ref(false);
+const generalError = ref(null);
 
 const registerReservation = async () => {
   isSuccessful.value = false;
   validationErrors.value = null;
+  generalError.value = null;
   try {
     const res = await reservationAPI.registerReservation(reservation.value);
     console.log(res);
@@ -32,6 +35,7 @@ const registerReservation = async () => {
   } catch (err) {
     console.log(err);
     if (err.response && err.response.data) {
+      generalError.value = err.response.data.message;
       validationErrors.value = err.response.data.errors;
     }
   }
@@ -108,6 +112,10 @@ const registerReservation = async () => {
         <SuccessMessage
           :is-successful="isSuccessful"
           success-message="Successfully registered your reservation!"
+        />
+        <ErrorMessage
+          :error-flag="generalError"
+          :error-message="generalError"
         />
         <ButtonFilled class="button" text="Submit">
           <template #icon><SaveIcon /></template>

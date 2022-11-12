@@ -18,6 +18,10 @@ module.exports = {
       people: {
         type: Sequelize.INTEGER,
       },
+      resStatus: {
+        type: Sequelize.ENUM("pending", "seated", "missed"),
+        defaultValue: "pending",
+      },
       customerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -25,6 +29,8 @@ module.exports = {
           model: "Customers",
           key: "id",
         },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       },
       createdAt: {
         allowNull: false,

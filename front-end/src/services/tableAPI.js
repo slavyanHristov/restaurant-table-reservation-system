@@ -7,6 +7,9 @@ class TableAPI {
   getAllTables() {
     return API().get("/tables");
   }
+  freeTable(tableId) {
+    return API().delete("/tables/" + tableId);
+  }
 }
 
 export default new TableAPI();

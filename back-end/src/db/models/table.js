@@ -3,9 +3,7 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Table extends Model {
     static associate(models) {
-      Table.belongsToMany(models.reservation, {
-        through: models.reservations_tables,
-        onDelete: "cascade",
+      Table.belongsTo(models.reservation, {
         onUpdate: "cascade",
         hooks: true,
       });
@@ -37,6 +35,18 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: {
             arg: true,
             msg: "Capacity shouldn't be blank!",
+          },
+          isInt: {
+            arg: true,
+            msg: "Should be an integer value!",
+          },
+          min: {
+            args: [1],
+            msg: "One seat needed at least!",
+          },
+          max: {
+            args: [8],
+            msg: "Maximum 8 seats per table!",
           },
         },
       },
