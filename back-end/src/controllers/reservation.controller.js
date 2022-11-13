@@ -1,4 +1,4 @@
-const reservationService = require("../services/reservation");
+const reservationService = require("../services/reservationService");
 const reservationDAO = require("../DAOs/reservation.dao");
 const tableDAO = require("../DAOs/table.dao");
 

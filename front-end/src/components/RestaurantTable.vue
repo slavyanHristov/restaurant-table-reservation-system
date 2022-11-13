@@ -30,11 +30,11 @@ const freeTable = async (id) => {
       <div>{{ props.table?.name }}</div>
       <div class="table-status" v-show="props.table.isOccupied">Occupied</div>
       <div
-        class="table-status"
+        class="free-table-button"
         v-show="props.table.isOccupied"
         @click="freeTable(props.table.id)"
       >
-        X
+        Free
       </div>
     </div>
     <div class="content">
@@ -62,6 +62,7 @@ const freeTable = async (id) => {
 .main-wrapper .header {
   display: flex;
   justify-content: center;
+  position: relative;
   align-items: center;
   grid-gap: 10px;
   font-family: "Inter-Bold";
@@ -76,6 +77,24 @@ const freeTable = async (id) => {
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 10px;
+}
+.header .free-table-button {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  color: var(--primary-black);
+  border: 1px solid var(--primary-black);
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Inter-Bold";
+  transition: all 0.2s ease;
+}
+.free-table-button:hover {
+  background-color: var(--primary-white);
+  border-color: var(--primary-green);
+  color: var(--primary-green);
 }
 .content {
   display: flex;

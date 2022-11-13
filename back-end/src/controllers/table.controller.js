@@ -1,4 +1,4 @@
-const tableService = require("../services/table");
+const tableService = require("../services/tableService");
 const tableDAO = require("../DAOs/table.dao");
 
 const getAllHandler = async (req, res) => {

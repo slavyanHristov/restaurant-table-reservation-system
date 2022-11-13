@@ -154,20 +154,22 @@ onUnmounted(() => {
       <h1>Reservations</h1>
     </div>
     <div class="content-wrapper">
-      <h1>Reservations for {{ currDate }}</h1>
-      <div class="date-navigation">
-        <LeftArrowIcon class="vector" @click="prev()" />
-        <ButtonFilled text="Today" @click="today()" />
-        <RightArrowIcon class="vector" @click="next()" />
-      </div>
-      <div class="table-wrapper">
-        <TableView
-          :fields="fields"
-          :collection="filterReservations"
-          @onOpen="openPopup"
-          @onSelectedReservation="assignSelectedReservation"
-          @onCanceledReservation="refreshReservations"
-        />
+      <div class="asd">
+        <h1>Reservations for {{ currDate }}</h1>
+        <div class="date-navigation">
+          <LeftArrowIcon class="vector" @click="prev()" />
+          <ButtonFilled text="Today" @click="today()" />
+          <RightArrowIcon class="vector" @click="next()" />
+        </div>
+        <div class="table-wrapper">
+          <TableView
+            :fields="fields"
+            :collection="filterReservations"
+            @onOpen="openPopup"
+            @onSelectedReservation="assignSelectedReservation"
+            @onCanceledReservation="refreshReservations"
+          />
+        </div>
       </div>
       <div class="all-tables" ref="allTablesRef">
         <h1>Tables</h1>
@@ -217,6 +219,9 @@ onUnmounted(() => {
   text-align: center;
   margin-bottom: 20px;
   margin-top: 20px;
+}
+.asd {
+  background-color: green;
 }
 .table-wrapper {
   display: flex;
