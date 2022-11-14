@@ -4,11 +4,24 @@ const getAllReservations = async (reservationDAO) => {
   return await reservationDAO.findAllReservations();
 };
 
+const validateTime = (currDate, resDate, resTime) => {
+  if (resDate === dateTimeValidator.asDateString(currDate)) {
+    if (resTime < dateTimeValidator.asTimeString(currDate)) {
+      throw {
+        status: 400,
+        message: "ERROR: Given time is in the past!",
+      };
+    }
+  }
+};
+
 const registerReservation = async (reservationDAO, payload) => {
+  validateTime(new Date(), payload.resDate, payload.resTime);
   return await reservationDAO.createReservation(payload);
 };
 
 const editReservation = async (reservationId, reservationDAO, payload) => {
+  validateTime(new Date(), payload.resDate, payload.resTime);
   return await reservationDAO.updateReservation(reservationId, payload);
 };
 

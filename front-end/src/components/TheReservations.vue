@@ -154,7 +154,7 @@ onUnmounted(() => {
       <h1>Reservations</h1>
     </div>
     <div class="content-wrapper">
-      <div class="asd">
+      <div class="reservations-wrapper">
         <h1>Reservations for {{ currDate }}</h1>
         <div class="date-navigation">
           <LeftArrowIcon class="vector" @click="prev()" />
@@ -220,8 +220,14 @@ onUnmounted(() => {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.asd {
-  background-color: green;
+.reservations-wrapper {
+  background-color: var(--primary-white);
+  margin-top: 20px;
+  margin-left: var(--x-spacing-mobile);
+  margin-right: var(--x-spacing-mobile);
+  border: 1px solid var(--lighter-gray);
+  border-radius: 10px;
+  padding-bottom: 50px;
 }
 .table-wrapper {
   display: flex;
@@ -232,7 +238,6 @@ onUnmounted(() => {
   align-items: center;
   border-radius: 10px;
   margin-top: 50px;
-  margin-bottom: 100px;
 }
 
 .date-navigation {
@@ -284,6 +289,10 @@ onUnmounted(() => {
   .all-tables {
     margin-left: 200px;
     margin-right: 200px;
+  }
+  .reservations-wrapper {
+    margin-left: var(--x-spacing-desktop);
+    margin-right: var(--x-spacing-desktop);
   }
 }
 </style>

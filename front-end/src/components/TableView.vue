@@ -29,6 +29,10 @@ const openPopup = (text) => {
 const toUpperCase = (str) => {
   return str.toUpperCase();
 };
+
+const isResStatusMissed = (resStatus) => {
+  return resStatus === "missed";
+};
 const cancelReservation = async (item) => {
   try {
     const res = await reservationAPI.cancelReservation(item.id);
@@ -81,7 +85,13 @@ const cancelReservation = async (item) => {
               />
             </div>
             <div class="status" v-else>
-              <p>{{ toUpperCase(item.resStatus) }}</p>
+              <p
+                :class="
+                  isResStatusMissed(item.resStatus) ? 'redColor' : 'blueColor'
+                "
+              >
+                {{ toUpperCase(item.resStatus) }}
+              </p>
             </div>
           </td>
         </tr>
@@ -108,6 +118,10 @@ const cancelReservation = async (item) => {
 table {
   border-collapse: separate;
   border-spacing: 0 0px;
+  border: 1px solid var(--primary-black);
+  border-top: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   width: 100%;
 }
 .header-row {
@@ -145,6 +159,16 @@ table {
 .status {
   padding-top: 10px;
   padding-bottom: 10px;
+  font-size: 13px;
+  font-family: "Inter-Bold";
+}
+
+.redColor {
+  color: var(--primary-red);
+}
+
+.blueColor {
+  color: var(--primary-blue);
 }
 
 .vector {
@@ -162,5 +186,11 @@ table {
 .list-enter-active,
 .list-leave-active {
   transition: all 0.5s ease-out;
+}
+
+@media screen and (min-width: 1024px) {
+  .status {
+    font-size: 15px;
+  }
 }
 </style>

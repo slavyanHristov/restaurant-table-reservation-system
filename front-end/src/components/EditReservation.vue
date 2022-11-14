@@ -2,6 +2,7 @@
 import ButtonFilled from "@/components/ButtonFilled.vue";
 import TextBox from "@/components/TextBox.vue";
 import SuccessMessage from "@/components/SuccessMessage.vue";
+import ErrorMessage from "@/components/ErrorMessage.vue";
 import SaveIcon from "~icons/fluent/save-16-regular";
 
 import { ref } from "vue";
@@ -42,8 +43,10 @@ const reservation = ref({
 });
 const validationErrors = ref({});
 const isSuccessful = ref(false);
+const generalErrors = ref(null);
 const editReservation = async () => {
   validationErrors.value = {};
+  generalErrors.value = null;
   isSuccessful.value = false;
   try {
     const res = await reservationAPI.editReservation(
@@ -56,6 +59,7 @@ const editReservation = async () => {
   } catch (err) {
     if (err.response && err.response.data) {
       validationErrors.value = err.response.data.errors;
+      generalErrors.value = err.response.data.message;
     }
     console.log(err);
   }
@@ -74,6 +78,10 @@ const editReservation = async () => {
         :placeholder-text="textBox.placeholderText"
         :errors="validationErrors"
         v-model:input="textBox.value"
+      />
+      <ErrorMessage
+        :error-flag="generalErrors"
+        :error-message="generalErrors"
       />
       <SuccessMessage
         class="success"

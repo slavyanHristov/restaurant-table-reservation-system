@@ -61,7 +61,7 @@ const freeTable = async (id) => {
 }
 .main-wrapper .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   position: relative;
   align-items: center;
   grid-gap: 10px;
@@ -79,7 +79,7 @@ const freeTable = async (id) => {
   border-radius: 10px;
 }
 .header .free-table-button {
-  position: absolute;
+  position: relative;
   top: 0;
   right: 5px;
   color: var(--primary-black);

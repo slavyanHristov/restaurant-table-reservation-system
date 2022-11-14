@@ -4,7 +4,6 @@ const Reservation = db.reservation;
 const Customer = db.customer;
 const Table = db.table;
 const { flattenArrayObjects } = require("../utils/flattenObject");
-const dateTimeValidator = require("../utils/dateAndTimeValidator");
 
 const findAllReservations = async () => {
   const reservations = await Reservation.findAll({
@@ -51,19 +50,7 @@ const createReservation = async (resDetails) => {
   const { resDate, resTime, people, ...customerDetails } = resDetails;
   const result = await db.sequelize.transaction(async (t) => {
     const customer = await createCustomer(customerDetails, t);
-    const currDate = new Date();
-    /**
-     * TODO:
-     * Move me to business logic
-     */
-    if (resDate === dateTimeValidator.asDateString(currDate)) {
-      if (resTime < dateTimeValidator.asTimeString(currDate)) {
-        throw {
-          status: 400,
-          message: "ERROR: Given time is in the past!",
-        };
-      }
-    }
+
     const reservation = await Reservation.create(
       {
         resDate: resDate,
