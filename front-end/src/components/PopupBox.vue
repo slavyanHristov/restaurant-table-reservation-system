@@ -57,6 +57,8 @@ button {
 
 .popup-wrapper {
   position: relative;
+  width: 40%;
+  min-width: 420px;
   background-color: var(--primary-white);
   border-radius: 10px;
 }
@@ -68,9 +70,13 @@ button {
 .popup-wrapper .header {
   display: flex;
   padding: 15px;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 60px;
+}
+
+.header h1 {
+  text-align: center;
 }
 
 .popupAnimation-enter-from,

@@ -15,13 +15,30 @@ const validateTime = (currDate, resDate, resTime) => {
   }
 };
 
+const checkClosingOpeningTime = (resTime) => {
+  if (resTime > "23:00:59") {
+    throw {
+      status: 400,
+      message:
+        "Reservation must be made at least an hour before closing time (12:00 AM)",
+    };
+  } else if (resTime < "11:00:59") {
+    throw {
+      status: 400,
+      message: "You can't make reservation before opening time! (11:00 AM)",
+    };
+  }
+};
+
 const registerReservation = async (reservationDAO, payload) => {
   validateTime(new Date(), payload.resDate, payload.resTime);
+  checkClosingOpeningTime(payload.resTime);
   return await reservationDAO.createReservation(payload);
 };
 
 const editReservation = async (reservationId, reservationDAO, payload) => {
   validateTime(new Date(), payload.resDate, payload.resTime);
+  checkClosingOpeningTime(payload.resTime);
   return await reservationDAO.updateReservation(reservationId, payload);
 };
 

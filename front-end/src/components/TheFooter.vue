@@ -29,6 +29,7 @@ const router = useRouter();
       </nav>
       <div class="line"></div>
       <div class="copyright">© Restaurant System, Inc. 2022.</div>
+      <div class="copyright">Made by: Slavyan Hristov</div>
     </div>
   </footer>
 </template>

@@ -60,7 +60,7 @@ const chooseTable = async () => {
         success-message="Successfully reserved a table!"
       />
       <ErrorMessage :error-flag="errMsg" :error-message="errMsg" />
-      <ButtonFilled>
+      <ButtonFilled text="Done">
         <template #icon>
           <SaveIcon />
         </template>
