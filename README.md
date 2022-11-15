@@ -5,7 +5,7 @@ Restaurant Table Reservation System - RTRS
 <br>
 </h1>
 
-<h4 align="center">Table reservation system which could be applied in any restaurant</h4>
+<h4 align="center">Table reservation web app which could be applied in any restaurant</h4>
 
 <p align="center">
       <a href="#key-features">Key Features</a> •
