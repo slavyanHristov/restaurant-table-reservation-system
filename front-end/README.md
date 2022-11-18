@@ -124,11 +124,12 @@ Mobile - Part 2
 <br>
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-mobile2.png" height="500"/>
 <br>
-Choose Table
+Choose Table - This popup window has a dropdown menu which contains all restaurant tables which are NOT occupied. When a table is chosen an validation is performed which checks if the given reservation's number of people is greater than the capacity of the table and also if the reservation's date is not for today, an error is return which informs the user that a table for the reservation can be chosen on the specific date of the reservation.
 <br>
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-choose-table-desktop.png" width="800" />
 <br>
-Edit Reservation
+Edit Reservation - All data for the specific reservation is loaded upon mounting the popup window in their respective input field. The Popup dialog box has tree fields (reservation date, reservation time and number of people).
+Each of the fields have their needed validations. Upon error free data sent, the server performs update query to the database and the record is updated successfully.
 <br>
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-edit-desktop.png" width="800" />
 </p>
