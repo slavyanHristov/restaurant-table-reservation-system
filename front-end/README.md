@@ -92,11 +92,43 @@ Desktop
 <br>
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/new-reservation/new-reservation-desktop.png" width="800" />
 <br>
-On entered incorrect data:
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/new-reservation/new-reservation-desktop2.png" width="800" />
+<br>
+On entered incorrect data:
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/new-reservation/new-reservation-validation1.png" width="800" />
 <br>
 Mobile
 <br>
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/new-reservation/new-reservation-mobile.png" height="500"/>
 </p>
 
+### Reservations
+
+*The reservations page displays all reservations for a specific day. The user has the ability to move forward, backwards or to current day. From this page the user can also perform specific actions such as: edit reservation, seat at a table, and cancel reservation. In this page all registered restaurant tables are outputed with their name and capacity. If a table is occupied, the system gives the ability to free the given table and to be able to be reserved once again.*
+
+<p align="center">
+Desktop - Part 1
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-desktop.png" width="800" />
+<br>
+Desktop - Part 2
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-desktop2.png" width="800" />
+<br>
+Mobile - Part 1
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-mobile.png" height="500"/>
+<br>
+Mobile - Part 2
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-mobile2.png" height="500"/>
+<br>
+Choose Table
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-choose-table-desktop.png" width="800" />
+<br>
+Edit Reservation
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-edit-desktop.png" width="800" />
+</p>
