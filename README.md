@@ -59,5 +59,5 @@ This software uses the following open source packages:
 
 ## Extra
 
-[Front-end README](https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/front-end/README.md)
-[Back-end README](https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/back-end/README.md)
+* [Front-end README](https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/front-end/README.md)
+* [Back-end README](https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/back-end/README.md)
