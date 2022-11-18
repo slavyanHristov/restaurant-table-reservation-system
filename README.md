@@ -11,7 +11,8 @@ Restaurant Table Reservation System - RTRS
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#credits">Credits</a> •
-  <a href="#extra">Extra</a>
+  <a href="#extra">Extra</a> •
+  <a href="#contact">Contact</a>
 </p>
 
 ## Key Features
@@ -25,7 +26,7 @@ Restaurant Table Reservation System - RTRS
 * Edit reservation details. ex. => Reservation Time, Reservation Date, Number of People
 * Cancel a reservation
 * Seat guests by accessing their registered reservation in the system and choosing free restaurant table
-* Free a table when the reservation is done.
+* Free a table when given reservation is complete.
 
 ## How To Use
 
@@ -67,3 +68,11 @@ This software uses the following open source packages:
 
 * [Front-end README](https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/front-end/README.md)
 * [Back-end README](https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/back-end/README.md)
+
+## Contact
+ > **Note**
+ > If any issues are encountered or you want to collaborate with me on developing further the project please contact me at:
+
+ > GitHub [@slavyanHristov](https://github.com/slavyanHristov) &nbsp;&middot;&nbsp;
+ > Gmail slavqnhristov@gmail.com &nbsp;&middot;&nbsp;
+ > ABV slavqn99@abv.bg (for bulgarian audience)
