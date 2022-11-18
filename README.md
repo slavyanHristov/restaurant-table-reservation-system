@@ -73,6 +73,8 @@ This software uses the following open source packages:
  > **Note**
  > If any issues are encountered or you want to collaborate with me on developing further the project please contact me at:
 
+ ---
+
  > GitHub [@slavyanHristov](https://github.com/slavyanHristov) &nbsp;&middot;&nbsp;
  > Gmail slavqnhristov@gmail.com &nbsp;&middot;&nbsp;
  > ABV slavqn99@abv.bg (for bulgarian audience)
