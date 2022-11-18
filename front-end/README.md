@@ -68,7 +68,17 @@ Mobile
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/add-tables/add-table-mobile.png" height="500"/>
 </p>
 
+### Search
 
-
-
+*The search page displays all pending reservations in the system and user can search for specific reservations by entering keywords in the search box. Search can be performed by all criteria (by name, email, reservation date, time etc..*
+<p align="center">
+<br>
+Desktop
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/search/search-desktop.png" width="800" />
+<br> 
+Mobile
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/search/search-mobile.png" height="500"/>
+</p>
 
