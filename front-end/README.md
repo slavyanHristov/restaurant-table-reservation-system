@@ -82,3 +82,21 @@ Mobile
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/search/search-mobile.png" height="500"/>
 </p>
 
+### New Reservation
+
+*The new reservation page has a form which requires all data needed from the user to register his reservation. All fields have specific data validations. For example User cannot make a reservation with date and time which is in the past. Upon error encountered, message is displayed which informs for the specific error.*
+
+<p align="center">
+<br>
+Desktop
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/new-reservation/new-reservation-desktop.png" width="800" />
+<br>
+On entered incorrect data:
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/new-reservation/new-reservation-desktop2.png" width="800" />
+<br>
+Mobile
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/new-reservation/new-reservation-mobile.png" height="500"/>
+</p>
+
