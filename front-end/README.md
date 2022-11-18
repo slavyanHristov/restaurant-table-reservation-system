@@ -39,15 +39,22 @@ front-end\
 
     Entry point of the web application
 
-* Desktop
-   
+<p align="center">
+Desktop
+<br> 
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-desktop.png" width="800" />  
+<br>   
+Mobile
+<br>  
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-mobile.png" height="500" /> 
+<br>   
+Mobile Navigation Menu
+<br>   
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-mobile-menu.png" height="500" />
+</p>
 
-<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-desktop.png" width="800"/>
 
-* Mobile
-  
-<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-mobile.png" height="500"/>
 
-* Mobile Navigation Menu
 
-<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-mobile-menu.png" height="500"/>
+
+
