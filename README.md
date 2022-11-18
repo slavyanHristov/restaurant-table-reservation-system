@@ -41,6 +41,12 @@ $ cd restaurant-table-reservation-system
 # Install dependencies
 $ npm install
 
+# Create environment variables file
+$ cd ./backend && touch .env
+
+# Add environment variables to the file
+$ echo "DB_USERNAME=<your_db_username> DB_PASSWORD=<your_db_password> DB_NAME=rtrs_db DB_HOST=localhost DB_DIALECT=mysql DB_PORT=3306 PORT=5000" >> .env
+
 # Run the app in production mode
 $ npm run start:prod
 
