@@ -10,8 +10,8 @@ Restaurant Table Reservation System - RTRS
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a>
+  <a href="#credits">Credits</a> •
+  <a href="#extra">Extra</a>
 </p>
 
 ## Key Features
@@ -29,7 +29,7 @@ Restaurant Table Reservation System - RTRS
 
 ## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.JS](https://nodejs.org/en/download/), [MySQL](https://dev.mysql.com/downloads/mysql/) (needed since the application and the database aren't hosted currently)
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/), [MySQL](https://dev.mysql.com/downloads/mysql/) (needed since the application and the database aren't hosted currently)
 
 ```bash
 # Clone this repository
@@ -47,3 +47,17 @@ $ npm run start:prod
 # Run the app in development mode (nodemon dependency needed)
 $ npm run start:dev
 ```
+
+## Credits
+
+This software uses the following open source packages:
+
+- [Node.js](https://nodejs.org/)
+- [Vue.js](https://vuejs.org/)
+- [Express.js](https://expressjs.com/)
+- [Sequelize](https://sequelize.org/)
+
+## Extra
+
+[Front-end README](https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/front-end/README.md)
+[Back-end README](https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/back-end/README.md)
