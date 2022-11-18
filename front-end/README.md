@@ -37,8 +37,14 @@ front-end\
 
  ### Home
 
+    Entry point of the web application
+
 * Desktop
+   
 
-<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-desktop.png" width="1000"/>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-desktop.png" width="800"/>
 
+* Mobile
+  
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-mobile.png" />
 
