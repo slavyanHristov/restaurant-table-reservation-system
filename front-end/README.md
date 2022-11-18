@@ -37,22 +37,42 @@ front-end\
 
  ### Home
 
-    Entry point of the web application
+*Entry point of the web application.*
 
 <p align="center">
 Desktop
+
 <br> 
-<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-desktop.png" width="800" />  
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-desktop.png" width="800" /> 
+
 <br>   
+
 Mobile
 <br>  
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-mobile.png" height="500" /> 
 <br>   
+
 Mobile Navigation Menu
+
 <br>   
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-mobile-menu.png" height="500" />
 </p>
 
+### Add Table
+
+*The add table page contains a form for registering new restaurant tables in the system. All fields contain validations for wrong input from the user.*
+
+<p align="center">
+Desktop
+
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/add-tables/add-table-desktop.png" width="800" /> 
+
+Mobile
+
+<br>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/add-tables/add-table-mobile.png" height="500"/>
+</p>
 
 
 
