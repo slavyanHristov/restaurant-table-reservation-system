@@ -81,7 +81,7 @@ const chooseTable = async (
   if (compareResDateToCurrDate(reservation.resDate, currDateStr) === 1) {
     throw {
       status: 400,
-      message: "Booking a table is only available on the reservation date!", //TODO: Pick appropriate error message
+      message: "Booking a table is only available on the reservation date!",
     };
   }
 
