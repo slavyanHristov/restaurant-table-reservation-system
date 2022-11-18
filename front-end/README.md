@@ -1,41 +1,40 @@
-# front-end
+<h1 align="center">RTRS Front-end built with Vue.JS 3
+</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+---
 
-## Recommended IDE Setup
+<p align="center">
+    <a href="#project-structure">Project Structure</a> •
+    <a href="#user-documentation">User Documentation</a>
+</p>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Project Structure
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
 ```
+front-end\
+ |--public\             
+ |--src\
+    |--assets\       # Images, stylesheets
+    |--components\   # UI components (.vue files)
+    |--router\       # Route definitions
+    |--services\     # AJAX services
+    |--utils\        # Helper modules
+    |--views\        # Webpages (page-level components)
+    |--App.vue       # Root vue component
+    |--main.js       # App entry point
+ |--index.html          # HTML entry point
+ |--.gitignore          # Tooling config file
+ |--.eslintrc.cjs       # Tooling config file
+ |--.prettierrc.json    # Tooling config file
+ |--jsconfig.json       # Config file
+ |--vite.config.js      # Config file
+ |--package-lock.json   # Dependency managment
+ |--package.json        # Dependency managment
+ |--README.md           # About
+ ```
 
-### Compile and Hot-Reload for Development
+ ## User Documentation
 
-```sh
-npm run dev
-```
+ ### Home
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Desktop

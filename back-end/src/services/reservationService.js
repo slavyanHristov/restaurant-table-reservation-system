@@ -30,7 +30,25 @@ const checkClosingOpeningTime = (resTime) => {
   }
 };
 
+const isFieldEmpty = (payload) => {
+  if (
+    !payload.firstName ||
+    !payload.lastName ||
+    !payload.phone ||
+    !payload.email ||
+    !payload.resDate ||
+    !payload.resTime ||
+    !payload.people
+  ) {
+    throw {
+      status: 400,
+      message: "Please fill in all fields!",
+    };
+  }
+};
+
 const registerReservation = async (reservationDAO, payload) => {
+  isFieldEmpty(payload);
   validateTime(new Date(), payload.resDate, payload.resTime);
   checkClosingOpeningTime(payload.resTime);
   return await reservationDAO.createReservation(payload);
