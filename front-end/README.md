@@ -39,6 +39,6 @@ front-end\
 
 * Desktop
 
-<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-desktop.png" width="400" />
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/home/home-desktop.png" />
 
 
