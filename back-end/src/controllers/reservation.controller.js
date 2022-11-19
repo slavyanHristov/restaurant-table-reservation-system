@@ -20,7 +20,7 @@ const registerHandler = async (req, res) => {
     payload
   );
 
-  return res.status(200).json({
+  return res.status(201).json({
     success: true,
     message: "Successfully registered the reservation!",
   });
@@ -37,7 +37,7 @@ const editHandler = async (req, res) => {
 
   return res.status(200).json({
     success: true,
-    message: "Successfully edit the reservation!",
+    message: "Successfully updated the reservation!",
     item: reservation,
   });
 };

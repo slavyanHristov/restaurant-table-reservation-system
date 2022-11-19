@@ -113,10 +113,154 @@ The third layer "Data Access Layer" handles all logic which accomplishes communi
 ##### Responses
 > | http code     | content-type          | response                                   |
 > |---------------|-----------------------|-------------------------------------------               |
-> | `200`         | `application/json`           |`{message:"You can learn more about the API and the whole project in the github repo! 😀", link:"https://github.com/slavyanHristov/restaurant-table-reservation-system",}`|
+> | `200`         | `application/json`           |`{message:"You can learn more about the API and the whole project in the github repo! 😀", link:"https://github.com/slavyanHristov/restaurant-table-reservation-system"}`|
 
 ##### Example cURL
 > ```javascript
 >  curl -i -H 'Accept: application/json' http://localhost:5000/api/v1/info
+> ```
+</details>
+
+#### Get All Tables
+
+<details>
+<summary><code>GET</code> <code>http://localhost:5000/v1/api<b>/tables</b></code> <code>(Displays all restaurant tables)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `200`         | `application/json`           |`{success: true, collection: [tables...]}`|
+> | `404`         | `application/json`           |`{success: false, message: "No restaurant tables inserted in the database."}`|
+
+##### Example cURL
+> ```javascript
+>  curl -i -H 'Accept: application/json' http://localhost:5000/api/v1/info
+> ```
+</details>
+
+#### Register Table
+
+<details>
+<summary><code>POST</code> <code>http://localhost:5000/v1/api<b>/tables</b></code> <code>(Inserts table in DB)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `201`         | `application/json`           |`{success: true, message:"Table successfully registered in the restaurant!", item: table,}`|
+> | `400`         | `application/json`           |`{status: 400, message: "Please fill in all fields!",}`|
+
+##### Example cURL
+> ```javascript
+>  curl -X POST http://localhost:5000/api/v1/tables -d @filename
+> ```
+</details>
+
+#### Get All Reservations
+
+<details>
+<summary><code>GET</code> <code>http://localhost:5000/v1/api<b>/reservations</b></code> <code>(Displays all reservations)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `200`         | `application/json`           |`{success: true, collection: [reservations...]}`|
+
+##### Example cURL
+> ```javascript
+>  curl -i -H 'Accept: application/json' http://localhost:5000/api/v1/reservations
+> ```
+</details>
+
+#### Register Reservation
+
+<details>
+<summary><code>POST</code> <code>http://localhost:5000/v1/api<b>/reservations</b></code> <code>(Registers reservation)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `201`         | `application/json`           |`{success: true, message: "Successfully registered the reservation!"}`|
+> | `400`         | `application/json`           |`{success: false, message: "Please fill in all fields!"}`|
+> | `400`         | `application/json`           |`{success: false, message: "ERROR: Given time is in the past!"}`|
+> | `400`         | `application/json`           |`{success: false, message: "Reservation must be made at least an hour before closing time (12:00 AM)"}`|
+> | `400`         | `application/json`           |`{success: false, message: "You can't make reservation before opening time! (11:00 AM)"}`|
+
+##### Example cURL
+> ```javascript
+>  curl -X POST http://localhost:5000/api/v1/reservations -d @filename
+> ```
+</details>
+
+#### Edit Reservation
+
+<details>
+<summary><code>PATCH</code> <code>http://localhost:5000/v1/api<b>/reservations/:id</b></code> <code>(Edits reservation details)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `200`         | `application/json`           |`{success: true,message:"Successfully updated the reservation!",item: reservation}`|
+> | `400`         | `application/json`           |`{success: false, message: "ERROR: Given time is in the past!"}`|
+> | `400`         | `application/json`           |`{success: false, message: "Reservation must be made at least an hour before closing time (12:00 AM)"}`|
+> | `400`         | `application/json`           |`{success: false, message: "You can't make reservation before opening time! (11:00 AM)"}`|
+
+##### Example cURL
+> ```javascript
+>  curl -X PATCH http://localhost:5000/api/v1/reservations/1 -d @filename
+> ```
+</details>
+
+#### Cancel Reservation
+
+<details>
+<summary><code>DELETE</code> <code>http://localhost:5000/v1/api<b>/reservations/:id</b></code> <code>(Deletes given reservation)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `200`         | `application/json`           |`{success: true, message:"Successfully canceled the reservation!", item: reservation}`|
+> | `400`         | `application/json`           |`{success: false, message: "Given reservation doesn't exist!"}`|
+
+##### Example cURL
+> ```javascript
+>  curl -X DELETE https://localhost:5000/api/v1/reservations/1
+> ```
+</details>
+
+#### Free Table
+
+<details>
+<summary><code>DELETE</code> <code>http://localhost:5000/v1/api<b>/tables/:id</b></code> <code>(Deletes given reservation)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `200`         | `application/json`           |`{success: true, message: "Successfully freed the chosen table!", item: info,}`|
+
+##### Example cURL
+> ```javascript
+>  curl -X DELETE https://localhost:5000/api/v1/tables/1
+> ```
+</details>
+
+#### Choose Table
+
+<details>
+<summary><code>POST</code> <code>http://localhost:5000/v1/api<b>/reservations/choose-table/:id</b></code> <code>(Selects table for reservation)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `200`         | `application/json`           |`{success: true, message: "Successfully chosen your table!", item: info}`|
+> | `404`         | `application/json`           |`{success: false, message: "Reservation not found!"}`|
+> | `400`         | `application/json`           |`{success: false, message: "Booking a table is only available on the reservation date!"}`|
+> | `400`         | `application/json`           |`{success: false,message: "You've already reserved a table! Please make a new reservation."}`|
+> | `400`         | `application/json`           |`{success: false, message: "You've missed the reservation date and time! Please make a new reservation.",}`|
+> | `400`         | `application/json`           |`{success: false, message: "Given table is already reserved!",}`|
+> | `400`         | `application/json`           |`{success: false, message: "Reservation's party size is too big for this table!"}`|
+
+##### Example cURL
+> ```javascript
+>  curl -X POST http://localhost:5000/api/v1/reservations -d @filename
 > ```
 </details>
