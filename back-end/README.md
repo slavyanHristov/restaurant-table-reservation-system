@@ -97,10 +97,26 @@ The third layer "Data Access Layer" handles all logic which accomplishes communi
 ##### Responses
 > | http code     | content-type          | response                                   |
 > |---------------|-----------------------|-------------------------------------------               |
-> | `201`         | `text/html`           |`Welcome to Restaurant Table Reservation System's API! 🎉`|
+> | `200`         | `text/html`           |`Welcome to Restaurant Table Reservation System's API! 🎉`|
 
 ##### Example cURL
 > ```javascript
 >  curl -i -H 'Accept: text/html' http://localhost:5000/api/v1/
+> ```
+</details>
+
+#### API Info
+
+<details>
+<summary><code>GET</code> <code>http://localhost:5000/v1/api<b>/info</b></code> <code>(Displays info about the API)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `200`         | `application/json`           |`{message:"You can learn more about the API and the whole project in the github repo! 😀", link:"https://github.com/slavyanHristov/restaurant-table-reservation-system",}`|
+
+##### Example cURL
+> ```javascript
+>  curl -i -H 'Accept: application/json' http://localhost:5000/api/v1/info
 > ```
 </details>
