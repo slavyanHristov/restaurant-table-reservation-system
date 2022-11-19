@@ -4,19 +4,24 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Tables", {
       id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(45),
+        allowNull: false,
       },
       capacity: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
       },
       isOccupied: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       reservationId: {
         type: Sequelize.INTEGER,

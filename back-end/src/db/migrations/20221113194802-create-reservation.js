@@ -4,22 +4,27 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Reservations", {
       id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
       },
       resDate: {
         type: Sequelize.DATEONLY,
+        allowNull: false,
       },
       resTime: {
         type: Sequelize.TIME,
+        allowNull: false,
       },
       people: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
       },
       resStatus: {
         type: Sequelize.ENUM("pending", "seated", "missed"),
+        allowNull: false,
         defaultValue: "pending",
       },
       customerId: {

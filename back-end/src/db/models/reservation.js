@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       resDate: {
         type: DataTypes.DATEONLY,
+        allowNull: false,
         validate: {
           notEmpty: {
             args: true,
@@ -36,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       resTime: {
         type: DataTypes.TIME,
+        allowNull: false,
         validate: {
           notEmpty: {
             args: true,
@@ -45,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       people: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         validate: {
           isInt: {
             arg: true,
@@ -62,6 +65,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       resStatus: {
         type: DataTypes.ENUM("pending", "seated", "missed"),
+        allowNull: false,
         defaultValue: "pending",
       },
     },

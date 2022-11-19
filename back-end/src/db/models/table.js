@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: {
         type: DataTypes.STRING(45),
+        allowNull: false,
         validate: {
           async isUnique(value) {
             const table = await Table.findOne({
@@ -27,10 +28,11 @@ module.exports = (sequelize, DataTypes) => {
             msg: "Table name shouldn't be blank!",
           },
         },
-        allowNull: false,
       },
       capacity: {
         type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
         validate: {
           notEmpty: {
             arg: true,
@@ -51,7 +53,9 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       isOccupied: {
+        allowNull: false,
         type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     {
