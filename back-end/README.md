@@ -55,27 +55,27 @@ back-end\
 
 *Entity Relationship Diagram describes all relationships between tables within a database and also their column details.*
 
-<img src="" />
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/erd-rtrs.png" />
 <br>
 <br>
 
-*The database has 3 tables.*
-```
+The database has 3 tables.
+
 Customers table holds all customers which have made reservations in the system. 
 It has columns for: 
 First Name, Last Name, Phone number, Email address.
-```
-```
+
+
 Reservations table describes all registered reservations in the system.
 It has columns for: 
 Reservation Date, Reservation Time, Reservation Status,
 Number of People and foreign key for customer.
-```
-```
+
+
 Tables table describes all registered restaurant tables in the restaurant which the system manages.
 It has columns for:
 Table name, Table capacity (number of seats), Table status (is it occupied) and foreign key for reservation.
-```
+
 
 ### Back-end Architecture
 
@@ -87,7 +87,7 @@ Table name, Table capacity (number of seats), Table status (is it occupied) and 
 
 *The third layer "Data Access Layer" handles all logic which accomplishes communication between the database and the system.*
 
-<img src=""/>
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/backend-architecture.png" height="500"/>
 <br>
 <br>
 
