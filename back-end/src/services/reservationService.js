@@ -55,6 +55,12 @@ const registerReservation = async (reservationDAO, payload) => {
 };
 
 const editReservation = async (reservationId, reservationDAO, payload) => {
+  const reservation = await reservationDAO.findReservationById(reservationId);
+  if (!reservation)
+    throw {
+      status: 404,
+      message: "Reservation not found!",
+    };
   validateTime(new Date(), payload.resDate, payload.resTime);
   checkClosingOpeningTime(payload.resTime);
   return await reservationDAO.updateReservation(reservationId, payload);

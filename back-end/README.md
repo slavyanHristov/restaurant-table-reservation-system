@@ -203,6 +203,7 @@ The third layer "Data Access Layer" handles all logic which accomplishes communi
 > | `400`         | `application/json`           |`{success: false, message: "ERROR: Given time is in the past!"}`|
 > | `400`         | `application/json`           |`{success: false, message: "Reservation must be made at least an hour before closing time (12:00 AM)"}`|
 > | `400`         | `application/json`           |`{success: false, message: "You can't make reservation before opening time! (11:00 AM)"}`|
+> | `404`         | `application/json`           |`{success: false, message: "Reservation not found!",}`|
 
 ##### Example cURL
 > ```javascript
@@ -223,7 +224,7 @@ The third layer "Data Access Layer" handles all logic which accomplishes communi
 
 ##### Example cURL
 > ```javascript
->  curl -X DELETE https://localhost:5000/api/v1/reservations/1
+>  curl -X DELETE http://localhost:5000/api/v1/reservations/1
 > ```
 </details>
 
@@ -236,10 +237,11 @@ The third layer "Data Access Layer" handles all logic which accomplishes communi
 > | http code     | content-type          | response                                   |
 > |---------------|-----------------------|-------------------------------------------               |
 > | `200`         | `application/json`           |`{success: true, message: "Successfully freed the chosen table!", item: info,}`|
+> | `404`         | `application/json`           |`{success: false,message: "Restaurant table not found!",}`|
 
 ##### Example cURL
 > ```javascript
->  curl -X DELETE https://localhost:5000/api/v1/tables/1
+>  curl -X DELETE http://localhost:5000/api/v1/tables/1
 > ```
 </details>
 

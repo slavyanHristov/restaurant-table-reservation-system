@@ -1,5 +1,6 @@
 const tableService = require("../services/tableService");
 const tableDAO = require("../DAOs/table.dao");
+const reservationDAO = require("../DAOs/reservation.dao");
 
 const getAllHandler = async (req, res) => {
   const tables = await tableService.getAllTables(tableDAO);
@@ -39,7 +40,10 @@ const registerHandler = async (req, res) => {
 
 const freeTableHandler = async (req, res) => {
   const tableId = req.params.tableId;
-  const info = await tableService.freeTable(tableDAO, tableId);
+  const info = await tableService.freeTable(
+    { reservationDAO, tableDAO },
+    tableId
+  );
 
   return res.status(200).json({
     success: true,

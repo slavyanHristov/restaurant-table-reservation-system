@@ -27,18 +27,14 @@ const findTableById = async (id) => {
   });
 };
 
-const freeTable = async (id) => {
-  const table = await findTableById(id);
-  /**
-   * TODO: check if table exists first
-   */
+const updateTable = async (table, payload) => {
+  return await table.update(payload);
+};
+
+const freeTable = async (reservationDAO, table) => {
   const reservationId = table.reservationId;
-  const reservation = await Reservation.findOne({
-    where: {
-      id: reservationId,
-    },
-  });
-  await table.update({
+  const reservation = await reservationDAO.findReservationById(reservationId);
+  await updateTable(table, {
     isOccupied: false,
     reservationId: null,
   });
