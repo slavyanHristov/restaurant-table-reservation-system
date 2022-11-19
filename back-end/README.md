@@ -1,7 +1,5 @@
 <h1 align="center">RTRS Back-end</h1>
 
----
-
 <p align="center">
     <a href="#project-structure">Project Structure</a> •
     <a href="#technologies">Technologies</a> •
@@ -57,7 +55,6 @@ back-end\
 
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/erd-rtrs.png" />
 <br>
-<br>
 
 The database has 3 tables.
 
@@ -79,16 +76,31 @@ Table name, Table capacity (number of seats), Table status (is it occupied) and 
 
 ### Back-end Architecture
 
-*The system uses Three-tier architecture which divides the system into three main layers.* 
+The system uses Three-tier architecture which divides the system into three main layers. 
 
-*The first one is the API Layer which handles all Application Programming Interface logic such as API endpoint definitions, middleware functions, API endpoint/route handlers etc..*
+The first one is the API Layer which handles all Application Programming Interface logic such as API endpoint definitions, middleware functions, API endpoint/route handlers etc..
 
-*The second layer named "Service layer" handles all business logic.*
+The second layer named "Service layer" handles all business logic.
 
-*The third layer "Data Access Layer" handles all logic which accomplishes communication between the database and the system.*
+The third layer "Data Access Layer" handles all logic which accomplishes communication between the database and the system.
 
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/backend-architecture.png" height="500"/>
 <br>
-<br>
 
 ## API Documentation
+
+#### Entry Endpoint
+
+<details>
+<summary><code>GET</code> <code>http://localhost:5000/v1/api<b>/</b></code> <code>(Displays introduction about the API)</code></summary>
+
+##### Responses
+> | http code     | content-type          | response                                   |
+> |---------------|-----------------------|-------------------------------------------               |
+> | `201`         | `text/html`           |`Welcome to Restaurant Table Reservation System's API! 🎉`|
+
+##### Example cURL
+> ```javascript
+>  curl -i -H 'Accept: text/html' http://localhost:5000/api/v1/
+> ```
+</details>
