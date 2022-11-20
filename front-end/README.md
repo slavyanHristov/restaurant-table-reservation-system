@@ -35,8 +35,10 @@ front-end\
  ```
 
 ## Site Map
+*Displays all pages in the web app and their hierrarchy.*
 
-<!--INSERT IMG HERE-->
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/sitemap.png" />
+<!-- Apply width? -->
 
 ## User Documentation
 
@@ -162,11 +164,13 @@ On entered incorrect data:
 <br>
 <b>Choose Table</b> - This popup window has a dropdown menu which contains all restaurant tables which are NOT occupied. When a table is chosen an validation is performed which checks if the given reservation's number of people is greater than the capacity of the table and also if the reservation's date is not for today, an error is return which informs the user that a table for the reservation can be chosen on the specific date of the reservation.
 <br>
+<br>
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-choose-table-desktop.png" width="800" />
 <br>
 <br>
 <b>Edit Reservation</b> - All data for the specific reservation is loaded upon mounting the popup window in their respective input field. The Popup dialog box has tree fields (reservation date, reservation time and number of people).
 Each of the fields have their needed validations. Upon error free data sent, the server performs update query to the database and the record is updated successfully.
+<br>
 <br>
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-edit-desktop.png" width="800" />
 
@@ -177,11 +181,10 @@ Each of the fields have their needed validations. Upon error free data sent, the
 #### Desktop
 
 <br>
-<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-edit-desktop.png" width="800" />
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/not-found/not-found-desktop.png" width="800" />
 <br>
 
 #### Mobile
 
 <br>
-<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/reservations/reservations-mobile2.png" height="500"/>
-<!--ADD 404 PAGE-->
+<img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/not-found/not-found-mobile.png" height="500"/>
