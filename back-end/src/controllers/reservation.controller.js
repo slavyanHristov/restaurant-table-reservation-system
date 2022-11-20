@@ -15,10 +15,7 @@ const getAllHandler = async (req, res) => {
 
 const registerHandler = async (req, res) => {
   const payload = req.body;
-  const reservation = await reservationService.registerReservation(
-    reservationDAO,
-    payload
-  );
+  await reservationService.registerReservation(reservationDAO, payload);
 
   return res.status(201).json({
     success: true,

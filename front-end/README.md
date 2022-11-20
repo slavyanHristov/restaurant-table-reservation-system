@@ -34,7 +34,7 @@ front-end\
  |--README.md           # About
  ```
 
-## Site Map
+## Sitemap
 *Displays all pages in the web app and their hierrarchy.*
 
 <img src="https://github.com/slavyanHristov/restaurant-table-reservation-system/blob/feature/readme/screenshots/sitemap.png" />

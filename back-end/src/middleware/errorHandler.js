@@ -1,7 +1,6 @@
 const getErrorMessagesByColumn = require("../utils/getErrorMessages");
 
 const errorHandler = (err, req, res, next) => {
-  console.log(err.name);
   if (err.name === "SequelizeValidationError") {
     return res.status(400).json({
       success: false,
